@@ -19,7 +19,7 @@ mix.js('resources/js/app.js', 'public/js')
     })
     .sourceMaps()
     .browserSync({
-        proxy: 'http://lv-study.local/',
+        proxy: 'http://lv-eliseev.loc/',
         files: [
             'public/css/app.css',  // Generated .css file
             'public/js/app.js',    // Generated .js file

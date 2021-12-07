@@ -1,0 +1,13 @@
+.nav-sidebar {
+    & > li {
+        cursor: pointer;
+        &.active {
+            i.right {
+                transform: rotate(-90deg);
+            }
+            .nav-treeview {
+                display: block;
+            }
+        }
+    }
+}
