@@ -47,6 +47,13 @@ services:
     ports:
       - "63791:6379"
 
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - 6080:8080
+
   node:
     build:
       context: .

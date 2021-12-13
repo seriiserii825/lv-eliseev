@@ -10,6 +10,9 @@ d-build:
 d-list:
 	sudo docker-compose ps
 
+a-migrate:
+	docker exec php php artisan migrate
+
 n-install:
 	docker exec node npm install
 
