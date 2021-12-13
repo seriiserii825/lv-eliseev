@@ -46,3 +46,12 @@ services:
     container_name: redis
     ports:
       - "63791:6379"
+
+  node:
+    build:
+      context: .
+      dockerfile: docker/node/node.docker
+    container_name: node
+    volumes:
+      - ./:/var/www
+    tty: true

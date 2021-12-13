@@ -1,11 +1,18 @@
 d-up:
-	docker-compose up -d
+	sudo docker-compose up -d
 
 d-down:
-	docker-compose down
+	sudo docker-compose down
 
 d-build:
-	docker-compose build
+	sudo docker-compose build
+
+d-list:
+	sudo docker-compose ps
+
+n-install:
+	docker exec node npm install
+
 perm:
 	sudo chown ${USER}:${USER} bootstrap/cache -R
 	sudo chown ${USER}:${USER} storage -R
