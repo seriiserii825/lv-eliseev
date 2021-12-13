@@ -33,8 +33,6 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      - "DB_HOST=mysql"
-      - "DB_PORT=3306"
       - "MYSQL_ROOT_PASSWORD=root"
     volumes:
       - "./docker/mysql:/var/lib/mysql"
