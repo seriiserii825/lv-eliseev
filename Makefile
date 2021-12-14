@@ -11,10 +11,10 @@ d-list:
 	sudo docker-compose ps
 
 a-migrate:
-	docker exec php php artisan migrate
+	docker-compose exec php-fpm php artisan migrate
 
 n-install:
-	docker exec node npm install
+	docker-compose exec node npm install
 
 perm:
 	sudo chown ${USER}:${USER} bootstrap/cache -R
