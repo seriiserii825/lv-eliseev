@@ -22,7 +22,7 @@ mix.setPublicPath('public/build')
     })
     .sourceMaps(productionSourceMaps, 'source-map')
     .browserSync({
-        proxy: 'http://lv-eliseev.loc/',
+        proxy: 'https://localhost:8088/',
         files: [
             'public/build/css/app.css',  // Generated .css file
             'public/build/js/app.js',    // Generated .js file
