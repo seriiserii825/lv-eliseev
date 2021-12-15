@@ -13963,6 +13963,10 @@ input {
   background-color: darkred;
 }
 
+.main {
+  min-height: 90vh;
+}
+
 .nav-sidebar > li {
   cursor: pointer;
 }
@@ -13971,6 +13975,12 @@ input {
 }
 .nav-sidebar > li.active .nav-treeview {
   display: block;
+}
+
+.main-footer {
+  padding: 3rem;
+  color: white;
+  background-color: #1d1e1f;
 }
 
 /*# sourceMappingURL=app.css.map*/
