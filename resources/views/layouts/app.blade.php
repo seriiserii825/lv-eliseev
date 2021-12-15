@@ -64,6 +64,11 @@
     <main class="main py-4">
         <div class="container">
             @yield('breadcrumbs')
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
             @yield('content')
         </div>
     </main>
