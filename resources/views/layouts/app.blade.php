@@ -8,10 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Scripts -->
     <script src="{{ mix('js/app.js', 'build') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -21,26 +19,13 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="main-header navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-            <a class="navbar-brand" href="{{ route('cabinet') }}">Cabinet</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
+            <div class="main-header__top">
+                <a href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                <ul class="main-header__menu">
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
@@ -77,7 +62,10 @@
     </nav>
 
     <main class="main py-4">
-        @yield('content')
+        <div class="container">
+            @yield('breadcrumbs')
+            @yield('content')
+        </div>
     </main>
     <div class="main-footer">
         <div class="container">
@@ -85,5 +73,7 @@
         </div>
     </div>
 </div>
+<script {{ asset('js/bootstrap.js') }}></script>
+<script {{ asset('js/app.js') }}></script>
 </body>
 </html>

@@ -1,0 +1,19 @@
+.main-header {
+    color: white;
+    background-color: $primary;
+    a {
+        color: white;
+    }
+    &__top {
+        display: flex;
+        align-items: center;
+        a {
+            margin-right: 3rem;
+        }
+    }
+    &__menu {
+        display: flex;
+        align-items: center;
+    }
+}
+

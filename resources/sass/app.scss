@@ -1,10 +1,12 @@
 @import "./modules/bootsrap";
-@import "./modules/styles";
+@import "./modules/variables";
+//@import "./modules/styles";
 @import "./modules/animate";
 @import "./modules/responsive";
 @import "./modules/colors";
 @import "./modules/marketing";
 @import "./modules/base";
 @import "./modules/nav-sidebar";
-@import "./modules/main-footer";
+@import "modules/layouts/main-footer";
+@import "./modules/layouts/main-header";
 
