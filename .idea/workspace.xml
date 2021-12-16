@@ -136,6 +136,7 @@
       <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
       <path value="$PROJECT_DIR$/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/vendor/diglactic/laravel-breadcrumbs" />
     </include_path>
   </component>
   <component name="ProjectId" id="22JRhllOazH9q845LVWDj5sSpLs" />
