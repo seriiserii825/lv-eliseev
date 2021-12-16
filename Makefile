@@ -1,25 +1,25 @@
-d-up:
+up:
 	sudo docker-compose up -d
 
-d-down:
+down:
 	sudo docker-compose down
 
-d-build:
+build:
 	sudo docker-compose build
 
-d-list:
+list:
 	sudo docker-compose ps
 
-a-migrate:
+migrate:
 	docker-compose exec php-fpm php artisan migrate
 
-n-install:
+install:
 	docker-compose exec node npm install
-n-prod:
+prod:
 	docker-compose exec node npm run prod
-n-dev:
+dev:
 	docker-compose exec node npm run dev
-n-watch:
+watch:
 	docker-compose exec node npm mix watch
 
 perm:
