@@ -13,6 +13,11 @@ class RegistrationController extends Controller
         return view('auth.register');
     }
 
+    public function login()
+    {
+        return view('auth.login');
+    }
+
     public function register(Request $request)
     {
         $this->validate($request, [
