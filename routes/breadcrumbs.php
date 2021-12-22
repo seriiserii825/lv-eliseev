@@ -24,6 +24,11 @@ Breadcrumbs::for('contact', function (BreadcrumbTrail $trail) {
 //    $trail->push('Register', route('register'));
 //});
 
+Breadcrumbs::for('login', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Login', route('login'));
+});
+
 // Home > Blog > [Category]
 //Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
 //    $trail->parent('blog');
