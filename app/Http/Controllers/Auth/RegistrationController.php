@@ -23,7 +23,8 @@ class RegistrationController extends Controller
         $this->middleware('guest');
     }
 
-    public function form(){
+    public function form()
+    {
         return view('auth.register');
     }
 
@@ -54,7 +55,7 @@ class RegistrationController extends Controller
     protected function registered(Request $request, $user)
     {
         $this->guard()->logout();
-        return redirect()->route('login') - with('Check your email');
+        return redirect()->route('login')->with('Check your email');
     }
 
     public function verify($token)
