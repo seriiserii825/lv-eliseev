@@ -24,3 +24,5 @@
 #practice
 - 01:55:00
 - 02:33:00
+- 03:08:00(need to add users fields in db)
+- 03:12:00(email send)
