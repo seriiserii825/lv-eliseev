@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\VerifyMail;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class RegistrationController extends Controller
 {
@@ -18,6 +21,10 @@ class RegistrationController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function form(){
+        return view('auth.register');
     }
 
     protected function validator(array $data)
@@ -31,18 +38,37 @@ class RegistrationController extends Controller
 
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'verify_token' => Str::random(),
             'status' => User::STATUS_WAIT
         ]);
+
+        Mail::to($user->email)->send(new VerifyMail($user));
+
+        return $user;
     }
 
     protected function registered(Request $request, $user)
     {
         $this->guard()->logout();
         return redirect()->route('login') - with('Check your email');
+    }
+
+    public function verify($token)
+    {
+        if (!$user = User::where('verify_token', $token)->first()) {
+            return redirect()->route('login')
+                ->with('error', 'Sorry your link cannot be identified.');
+        }
+
+        try {
+            $this->service->verify($user->id);
+            return redirect()->route('login')->with('success', 'Your e-mail is verified. You can now login.');
+        } catch (\DomainException $e) {
+            return redirect()->route('login')->with('error', $e->getMessage());
+        }
     }
 }
