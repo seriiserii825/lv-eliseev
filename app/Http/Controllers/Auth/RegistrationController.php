@@ -28,16 +28,6 @@ class RegistrationController extends Controller
         return view('auth.register');
     }
 
-    public function loginForm()
-    {
-        return view('auth.login');
-    }
-
-    public function login(Request $request)
-    {
-        return [];
-    }
-
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -76,7 +66,9 @@ class RegistrationController extends Controller
         }
 
         try {
-//            $this->service->verify($user->id);
+            $user->status = User::STATUS_ACTIVE;
+            $user->verify_token = null;
+            $user->save();
             return redirect()->route('login')->with('success', 'Your e-mail is verified. You can now login.');
         } catch (\DomainException $e) {
             return redirect()->route('login')->with('error', $e->getMessage());

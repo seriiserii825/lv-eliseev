@@ -6,7 +6,13 @@
     }
     &__top {
         display: flex;
+        justify-content: space-between;
         align-items: center;
+        width: 100%;
+        ul {
+            display: flex;
+            align-items: center;
+        }
         a {
             margin-right: 3rem;
         }

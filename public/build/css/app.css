@@ -12434,6 +12434,12 @@ input {
 }
 .main-header__top {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.main-header__top ul {
+  display: flex;
   align-items: center;
 }
 .main-header__top a {

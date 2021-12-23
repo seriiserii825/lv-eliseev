@@ -22,10 +22,16 @@
     <nav class="main-header navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <div class="main-header__top">
-                <a href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <a href="{{ route('contact') }}">Contacts</a>
+                <ul>
+                    <li>
+                        <a href="{{ url('/') }}">
+                            {{ config('app.name', 'Laravel') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('contact') }}">Contacts</a>
+                    </li>
+                </ul>
 {{--                --}}
 {{--                <ul class="main-header__menu">--}}
 {{--                    <!-- Authentication Links -->--}}
@@ -60,6 +66,17 @@
 {{--                    @endguest--}}
 {{--                </ul>--}}
 {{--                --}}
+                <ul>
+                    <li>
+                        <a href="{{ route('register') }}">Register</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('login') }}">Login</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('logout') }}">Logout</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
