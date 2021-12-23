@@ -32,9 +32,9 @@
                         <a href="{{ route('contact') }}">Contacts</a>
                     </li>
                 </ul>
-{{--                --}}
-{{--                <ul class="main-header__menu">--}}
-{{--                    <!-- Authentication Links -->--}}
+
+                <ul class="main-header__menu">
+                    <!-- Authentication Links -->
 {{--                    @guest--}}
 {{--                        <li class="nav-item">--}}
 {{--                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>--}}
@@ -67,15 +67,18 @@
 {{--                </ul>--}}
 {{--                --}}
                 <ul>
-                    <li>
-                        <a href="{{ route('register') }}">Register</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('login') }}">Login</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('logout') }}">Logout</a>
-                    </li>
+                    @guest
+                        <li>
+                            <a href="{{ route('register') }}">Register</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('login') }}">Login</a>
+                        </li>
+                    @else
+                        <li>
+                            <a href="{{ route('logout') }}">Logout</a>
+                        </li>
+                    @endauth
                 </ul>
             </div>
         </div>

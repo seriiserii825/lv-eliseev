@@ -13,6 +13,11 @@ list:
 migrate:
 	docker-compose exec php-fpm php artisan migrate
 
+clear:
+	docker-compose exec php-fpm php artisan view:clear
+	docker-compose exec php-fpm php artisan cache:clear
+	docker-compose exec php-fpm php artisan config:clear
+
 install:
 	docker-compose exec node npm install
 prod:
