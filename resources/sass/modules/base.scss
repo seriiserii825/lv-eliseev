@@ -87,7 +87,6 @@ a {
     color: inherit;
     text-decoration: none;
 }
-
 .img-responsive {
     &.img--desktop {
         @media screen and (max-width: 400px) {
@@ -112,7 +111,7 @@ input {
     font-size: 1.8rem;
 }
 .custom-file-input,
-.custom-file-label{
+.custom-file-label {
     display: block;
     height: 4rem;
     cursor: pointer;
@@ -127,7 +126,8 @@ input {
     height: auto !important;
 }
 .alert-danger {
-  background-color: darkred;
+    color: white;
+    background-color: darkred;
 }
 .main {
     min-height: 90vh;
