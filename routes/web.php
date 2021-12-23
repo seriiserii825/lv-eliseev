@@ -25,7 +25,7 @@ Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login
 Route::get('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 Route::get('/contacts', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact');
 
-Route::middleware('auth')->group(function(){
+Route::middleware(['auth'])->group(function(){
     Route::get('/admin', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.index');
 });
 
