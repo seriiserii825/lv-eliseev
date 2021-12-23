@@ -47,6 +47,9 @@
                             <a href="#">{{ Auth::user()->email }}</a>
                         </li>
                         <li>
+                            <a href="{{ route('admin.index') }}">Admin</a>
+                        </li>
+                        <li>
                             <a href="{{ route('logout') }}">Logout</a>
                         </li>
                     @endauth
