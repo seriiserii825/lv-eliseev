@@ -34,26 +34,28 @@
                 </ul>
 
                 <ul class="main-header__menu">
-                <ul>
                     @guest
-                        <li>
-                            <a href="{{ route('register') }}">Register</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('login') }}">Login</a>
-                        </li>
+                        <ul>
+                            <li>
+                                <a href="{{ route('register') }}">Register</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('login') }}">Login</a>
+                            </li>
+                        </ul>
                     @else
-                        <li>
-                            <a href="#">{{ Auth::user()->email }}</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.index') }}">Admin</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('logout') }}">Logout</a>
-                        </li>
-                    @endauth
-                </ul>
+                        <ul>
+                            <li>
+                                <a href="#">{{ Auth::user()->email }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.index') }}">Admin</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('logout') }}">Logout</a>
+                            </li>
+                        </ul>
+                @endauth
             </div>
         </div>
     </nav>
