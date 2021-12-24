@@ -21,7 +21,7 @@ clear:
 	docker-compose exec php-fpm php artisan cache:clear
 	docker-compose exec php-fpm php artisan config:clear
 
-generate:
+ide-generate:
 	php artisan ide-helper:generate
 
 install:
