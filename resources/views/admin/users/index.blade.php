@@ -29,7 +29,7 @@
                             <form action="{{ route('admin.users.destroy', $user->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger">Delete</button>
+                                <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
                             </form>
                         </td>
                     </tr>
@@ -37,5 +37,7 @@
             @endforeach
             </tbody>
         </table>
+
+        {{ $users->links() }}
     </div>
 @endsection

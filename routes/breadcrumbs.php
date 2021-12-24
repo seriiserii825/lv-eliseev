@@ -57,5 +57,6 @@ Breadcrumbs::for('admin.users.show', function (BreadcrumbTrail $trail, User $use
 });
 
 Breadcrumbs::for('admin.users.edit', function ($trail, User $user) {
+    $trail->parent('admin.users.show', $user);
     $trail->push('Edit', route('admin.users.edit', $user));
 });

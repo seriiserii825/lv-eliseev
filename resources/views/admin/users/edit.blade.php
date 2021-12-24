@@ -17,7 +17,7 @@
                                 <div class="col-md-6">
                                     <input id="name" type="text"
                                            class="form-control @error('name') is-invalid @enderror" name="name"
-                                           value="{{ $user->name }}" required>
+                                           value="{{ old('name', $user->name) }}" required>
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -32,7 +32,7 @@
                                 <div class="col-md-6">
                                     <input id="email" type="email"
                                            class="form-control @error('email') is-invalid @enderror" name="email"
-                                           value="{{ $user->email  }}" required autocomplete="email" autofocus>
+                                           value="{{ old('email', $user->email) }}" required autocomplete="email" autofocus>
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -47,7 +47,7 @@
                                 <div class="col-md-6">
                                     <select name="status" id="status" class="form-control">
                                         @foreach($statuses as $status)
-                                            <option value="{{ $status }}" @if($status === $user->status) selected @endif >{{ $status }}</option>
+                                            <option value="{{ $status }}" @if($status === old('status', $user->status)) selected @endif >{{ $status }}</option>
                                         @endforeach
                                     </select>
                                 </div>

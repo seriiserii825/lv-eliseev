@@ -23,6 +23,10 @@ clear:
 	docker-compose exec php-fpm php artisan view:clear
 	docker-compose exec php-fpm php artisan cache:clear
 	docker-compose exec php-fpm php artisan config:clear
+	docker-compose exec php-fpm php artisan route:clear
+
+seed:
+	docker-compose exec php-fpm php artisan db:seed
 
 ide-generate:
 	php artisan ide-helper:generate
