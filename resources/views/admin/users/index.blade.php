@@ -25,7 +25,6 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->status }}</td>
                         <td class="d-flex align-items-center">
-                            <a href="{{ route('admin.users.show', $user) }}" class="btn btn-primary mr-3">View</a>
                             <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-success mr-3">Edit</a>
                             <form action="{{ route('admin.users.destroy', $user->id) }}" method="post">
                                 @csrf
