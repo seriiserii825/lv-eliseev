@@ -7,8 +7,11 @@ down:
 build:
 	sudo docker-compose build
 
-list:
+ps:
 	sudo docker-compose ps
+
+list:
+	sudo docker-compose exec php-fpm php artisan route:list -c --name=users
 
 migrate:
 	docker-compose exec php-fpm php artisan migrate
@@ -17,6 +20,9 @@ clear:
 	docker-compose exec php-fpm php artisan view:clear
 	docker-compose exec php-fpm php artisan cache:clear
 	docker-compose exec php-fpm php artisan config:clear
+
+generate:
+	php artisan ide-helper:generate
 
 install:
 	docker-compose exec node npm install

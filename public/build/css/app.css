@@ -12398,6 +12398,7 @@ input {
 }
 
 .alert-danger {
+  color: white;
   background-color: darkred;
 }
 
@@ -12407,6 +12408,10 @@ input {
 
 .breadcrumb {
   text-align: left;
+}
+
+.nav-link {
+  transition: all 0.5s;
 }
 
 .nav-sidebar > li {
