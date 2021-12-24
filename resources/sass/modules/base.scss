@@ -134,7 +134,29 @@ input {
 }
 .breadcrumb {
     text-align: left;
+    a {
+        color: $primary;
+    }
 }
 .nav-link {
     transition: all .5s;
+}
+.nav-tabs {
+    .nav-link {
+        &.active {
+            color: white;
+            background-color: $primary;
+        }
+    }
+}
+table {
+        th {
+            color: white;
+            background-color: #333;
+        }
+}
+form {
+    button {
+        cursor: pointer;
+    }
 }

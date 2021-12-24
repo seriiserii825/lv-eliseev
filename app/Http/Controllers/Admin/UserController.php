@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
@@ -24,13 +26,16 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users'
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|confirmed',
         ]);
 
         User::create([
             'name' => $request['name'],
             'email' => $request['email'],
-            'status' => User::STATUS_ACTIVE
+            'status' => User::STATUS_ACTIVE,
+            'password' => Hash::make($request['password']),
+            'verify_token' => Str::random(),
         ]);
 
         return redirect()->route('admin.users.index')->with('success', 'User was created');
@@ -49,12 +54,13 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $data = $this->validate($request, [
+        $this->validate($request, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,id,' . $user->id,
             'status' => ['required', 'string', Rule::in(User::STATUS_WAIT, User::STATUS_ACTIVE)],
         ]);
-        $user->update($data);
+
+        $user->update($request->only(['name', 'email', 'status']));
 
         return redirect()->route('admin.users.index')->with('success', 'User was updated');
     }
@@ -62,6 +68,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('admin.users.index')->with('success', 'User was updated');
+        return redirect()->route('admin.users.index')->with('success', 'User was deleted');
     }
 }
