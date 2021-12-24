@@ -4,6 +4,9 @@ up:
 down:
 	sudo docker-compose down
 
+down-orphan:
+	sudo docker-compose down --remove-orphans
+
 build:
 	sudo docker-compose build
 
