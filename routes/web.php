@@ -32,4 +32,5 @@ Route::group([
 ], function () {
     Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('index');
     Route::resource('users', '\App\Http\Controllers\Admin\UserController');
+    Route::post('/users/verify', [\App\Http\Controllers\Admin\UserController::class, 'verify'])->name('users.verify');
 });

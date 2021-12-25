@@ -22,6 +22,7 @@
 - 03:36:00(Middleware)
 - 05:55:00(bussiness logic)
 - 06:07:00(status)
+- 06:12:35(status verify)
 
 #practice
 - 01:55:00
@@ -32,3 +33,4 @@
 - 04:45:00(group web)
 - 05:06:00(need to fixed breadcrumbs)
 - 05:55:00(bussiness logic)
+- 06:12:35(status verify)

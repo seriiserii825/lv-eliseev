@@ -33,6 +33,13 @@
                         </td>
                         <td class="d-flex align-items-center">
                             <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-success mr-3">Edit</a>
+
+                            <form action="{{ route('admin.users.verify') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $user->id }}">
+                                <button class="btn btn-primary mr-3">Verify</button>
+                            </form>
+
                             <form action="{{ route('admin.users.destroy', $user->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')

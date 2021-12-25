@@ -55,4 +55,15 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('admin.users.index')->with('success', 'User was deleted');
     }
+
+    public function verify(Request $request)
+    {
+        $user = User::query()->findOrFail($request['id']);
+        try {
+            $user->verify();
+            return redirect()->route('admin.users.index')->with('success', 'User was verified');
+        } catch (\DomainException $e) {
+            return redirect()->route('admin.users.index')->with('error', $e->getMessage());
+        }
+    }
 }
