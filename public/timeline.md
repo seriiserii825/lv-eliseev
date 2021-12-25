@@ -1,16 +1,5 @@
-- 03:42:16
-- 04:02:13
-- 04:10:00
-02
-- 01:57:32
-- 03:00:26
-- 03:38:20
-- 03:52:44
-- 04:07:54
-03
-- 00:39:31
-
 #theory
+## 2
 - 01:55:00
 - 02:35:00(Авторизация)
 - 02:49:00(Валидация)
@@ -24,6 +13,14 @@
 - 06:07:00(status)
 - 06:12:35(status verify)
 - 06:14:00(register service)
+## 3
+- 00:24:00 Panel overview
+- 00:32:24 Fake data
+- 01:08:40 User in admin if refreshed db users
+- 01:57:30 verify and migration
+- 02:03:30 Roles Overview
+- 02:50:30 Start to create Roles
+
 
 #practice
 - 01:55:00
