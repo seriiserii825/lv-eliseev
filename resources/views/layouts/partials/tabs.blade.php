@@ -1,4 +1,4 @@
-<ul class="nav nav-tabs mb-3">
+<ul class="nav nav-tabs">
     <li class="nav-item">
         <a href="{{ route('admin.index') }}" class="nav-link {{ request()->is('admin') ? 'active' : '' }}">Admin</a>
     </li>

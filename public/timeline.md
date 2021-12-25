@@ -20,6 +20,8 @@
 - 03:30:00(Не логинить если email не подтвержден)
 - 03:36:00(Миграции)
 - 03:36:00(Middleware)
+- 05:55:00(bussiness logic)
+- 06:07:00(status)
 
 #practice
 - 01:55:00
@@ -29,3 +31,4 @@
 - 03:40:00(login)
 - 04:45:00(group web)
 - 05:06:00(need to fixed breadcrumbs)
+- 05:55:00(bussiness logic)

@@ -31,13 +31,11 @@ class RegistrationController extends Controller
 
     public function register(RegisterRequest $request)
     {
-        $user = User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-            'verify_token' => Str::random(),
-            'status' => User::STATUS_WAIT
-        ]);
+        $user = User::register(
+            $request['name'],
+            $request['email'],
+            $request['password'],
+        );
 
         Mail::to($user->email)->send(new VerifyMail($user));
         event(new Registered($user));
@@ -59,9 +57,7 @@ class RegistrationController extends Controller
         }
 
         try {
-            $user->status = User::STATUS_ACTIVE;
-            $user->verify_token = null;
-            $user->save();
+            $user->verify();
             return redirect()->route('login')->with('success', 'Your e-mail is verified. You can now login.');
         } catch (\DomainException $e) {
             return redirect()->route('login')->with('error', $e->getMessage());

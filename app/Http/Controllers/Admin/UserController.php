@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateRequest;
+use App\Http\Requests\UpdateRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -13,7 +15,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::query()->orderByDesc('id')->paginate(20);
+        $users = User::query()->orderByDesc('id')->paginate(10);
         return view('admin.users.index', compact('users'));
     }
 
@@ -22,21 +24,10 @@ class UserController extends Controller
         return view('admin.users.create');
     }
 
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|confirmed',
-        ]);
 
-        User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'status' => User::STATUS_ACTIVE,
-            'password' => Hash::make($request['password']),
-            'verify_token' => Str::random(),
-        ]);
+        User::register($request['name'], $request['email'], $request['password']);
 
         return redirect()->route('admin.users.index')->with('success', 'User was created');
     }
@@ -52,14 +43,8 @@ class UserController extends Controller
         return view('admin.users.edit', compact('user', 'statuses'));
     }
 
-    public function update(Request $request, User $user)
+    public function update(UpdateRequest $request, User $user)
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,id,' . $user->id,
-            'status' => ['required', 'string', Rule::in(User::STATUS_WAIT, User::STATUS_ACTIVE)],
-        ]);
-
         $user->update($request->only(['name', 'email', 'status']));
 
         return redirect()->route('admin.users.index')->with('success', 'User was updated');

@@ -12049,6 +12049,9 @@ input {
   transition: all 0.5s;
 }
 
+.nav-tabs {
+  margin-bottom: 5rem;
+}
 .nav-tabs .nav-link.active {
   color: white;
   background-color: #337ab7;

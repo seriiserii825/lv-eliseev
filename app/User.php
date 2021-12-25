@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 /**
  * @property int $id
@@ -19,14 +21,50 @@ class User extends Authenticatable
     public const STATUS_WAIT = 'wait';
     public const STATUS_ACTIVE = 'active';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name', 'email', 'password', 'status', 'verify_token'
     ];
+
+    public static function register(string $name,string $email,string $password): self{
+        return static::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => Hash::make($password),
+            'status' => self::STATUS_WAIT,
+            'verify_token' => Str::random(),
+        ]);
+    }
+
+    public static function createByAdmin($name, $email){
+        return static::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => Hash::make(Str::random()),
+            'status' => self::STATUS_ACTIVE
+        ]);
+    }
+
+    public function isWait(): bool
+    {
+        return $this->status === self::STATUS_WAIT;
+    }
+
+    public function isActive(): bool
+    {
+        return $this->status === self::STATUS_ACTIVE;
+    }
+
+    public function verify(): void
+    {
+        if (!$this->isWait()) {
+            throw new \DomainException('User is already verified.');
+        }
+
+        $this->update([
+            'status' => self::STATUS_ACTIVE,
+            'verify_token' => null,
+        ]);
+    }
 
     protected $hidden = [
         'password', 'remember_token',

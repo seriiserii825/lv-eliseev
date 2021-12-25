@@ -23,7 +23,14 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->status }}</td>
+                        <td>
+                            @if($user->isWait())
+                                <span class="badge badge-primary">{{ $user->status }}</span>
+                            @endif
+                            @if($user->isActive())
+                                <span class="badge badge-success">{{ $user->status }}</span>
+                            @endif
+                        </td>
                         <td class="d-flex align-items-center">
                             <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-success mr-3">Edit</a>
                             <form action="{{ route('admin.users.destroy', $user->id) }}" method="post">

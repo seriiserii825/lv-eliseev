@@ -142,6 +142,7 @@ input {
     transition: all .5s;
 }
 .nav-tabs {
+    margin-bottom: 5rem;
     .nav-link {
         &.active {
             color: white;
