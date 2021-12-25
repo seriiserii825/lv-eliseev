@@ -23,6 +23,7 @@
 - 05:55:00(bussiness logic)
 - 06:07:00(status)
 - 06:12:35(status verify)
+- 06:14:00(register service)
 
 #practice
 - 01:55:00
@@ -34,3 +35,4 @@
 - 05:06:00(need to fixed breadcrumbs)
 - 05:55:00(bussiness logic)
 - 06:12:35(status verify)
+- 06:14:00(register service)

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Mail\VerifyMail;
+use App\UseCases\Auth\RegisterService;
 use App\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -18,10 +19,12 @@ class RegistrationController extends Controller
     use RegistersUsers;
 
     protected $redirectTo = '/login';
+    protected $service;
 
-    public function __construct()
+    public function __construct(RegisterService $service)
     {
         $this->middleware('guest');
+        $this->service = $service;
     }
 
     public function form()
@@ -31,15 +34,7 @@ class RegistrationController extends Controller
 
     public function register(RegisterRequest $request)
     {
-        $user = User::register(
-            $request['name'],
-            $request['email'],
-            $request['password'],
-        );
-
-        Mail::to($user->email)->send(new VerifyMail($user));
-        event(new Registered($user));
-
+        $this->service->register($request);
         return redirect()->route('login')->with('successs', 'You are success registered');
     }
 
