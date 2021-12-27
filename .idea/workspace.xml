@@ -159,7 +159,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/users" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../localwp/pizzavoglia/app/public/wp-content/themes/ms-pizzavoglia" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -170,9 +170,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/timeline" />
       <recent name="$PROJECT_DIR$/resources/views/admin/users" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/timeline" />
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/app/Models" />
       <recent name="$PROJECT_DIR$/resources/sass/modules/layouts" />
