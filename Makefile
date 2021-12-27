@@ -28,6 +28,12 @@ clear:
 seed:
 	docker-compose exec php-fpm php artisan db:seed
 
+make-seed:
+	docker-compose exec php-fpm php artisan make:seeder UsersTableSeeder
+
+tinker:
+	docker-compose exec php-fpm php artisan tinker
+
 ide-generate:
 	php artisan ide-helper:generate
 
