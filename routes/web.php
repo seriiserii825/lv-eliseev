@@ -28,7 +28,7 @@ Route::get('/contacts', [\App\Http\Controllers\ContactController::class, 'index'
 Route::group([
     'prefix' => 'admin',
     'as' => 'admin.',
-    'middleware' => 'auth'
+    'middleware' => ['auth', 'can:admin-panel']
 ], function () {
     Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('index');
     Route::resource('users', '\App\Http\Controllers\Admin\UserController');
