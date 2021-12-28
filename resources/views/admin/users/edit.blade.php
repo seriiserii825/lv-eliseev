@@ -52,6 +52,17 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="role"
+                                       class="col-md-3 col-form-label">Roles</label>
+                                <div class="col-md-6">
+                                    <select name="role" id="status" class="form-control">
+                                        @foreach($roles as $role)
+                                            <option value="{{ $role }}" @if($role === old('role', $user->role)) selected @endif >{{ $role }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
 
                             <div class="form-group row mb-0">
                                 <div class="d-flex justify-content-end w-100 col-md-12">

@@ -7,15 +7,12 @@ use App\Http\Requests\CreateRequest;
 use App\Http\Requests\UpdateRequest;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $users = User::query()->orderByDesc('id')->paginate(10);
+        $users = User::query()->orderByDesc('updated_at')->paginate(20);
         return view('admin.users.index', compact('users'));
     }
 
@@ -40,12 +37,13 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $statuses = [User::STATUS_WAIT, User::STATUS_ACTIVE];
-        return view('admin.users.edit', compact('user', 'statuses'));
+        $roles = [User::ROLE_ADMIN, User::ROLE_USER];
+        return view('admin.users.edit', compact('user', 'statuses', 'roles'));
     }
 
     public function update(UpdateRequest $request, User $user)
     {
-        $user->update($request->only(['name', 'email', 'status']));
+        $user->update($request->only(['name', 'email', 'status', 'role']));
 
         return redirect()->route('admin.users.index')->with('success', 'User was updated');
     }
