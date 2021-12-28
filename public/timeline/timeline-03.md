@@ -2,7 +2,7 @@
 - 00:24:00 Panel overview
 - 00:32:24 Fake data
 - 01:08:40 User in admin if refreshed db users
-- 01:57:30 verify and migration
+- 01:58:00 verify and migration
 - 02:03:30 Roles Overview
 - 02:50:30 Rolest test
 - 02:59:07 Role from console
@@ -17,3 +17,4 @@
 #Practice
 - 00:24:00 Panel overview
 - 00:32:24 Fake data
+- 01:08:40 User in admin if refreshed db users
