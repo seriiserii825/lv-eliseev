@@ -10,10 +10,28 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::query()->orderByDesc('updated_at')->paginate(20);
-        return view('admin.users.index', compact('users'));
+        $query = User::query()->orderByDesc('updated_at');
+        if (!empty($value = $request->get('id'))) {
+            $query->where('id', $value);
+        }
+        if (!empty($value = $request->get('email'))) {
+            $query->where('email', 'like', '%' . $value . '%');
+        }
+        if (!empty($value = $request->get('name'))) {
+            $query->where('name', 'like', '%' . $value . '%');
+        }
+        if (!empty($value = $request->get('status'))) {
+            $query->where('status', $value);
+        }
+        if (!empty($value = $request->get('role'))) {
+            $query->where('role', $value);
+        }
+        $users = $query->paginate(40);
+        $statuses = User::statuses();
+        $roles = User::roles();
+        return view('admin.users.index', compact('users', 'statuses', 'roles'));
     }
 
     public function create()
@@ -36,8 +54,8 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        $statuses = [User::STATUS_WAIT, User::STATUS_ACTIVE];
-        $roles = [User::ROLE_ADMIN, User::ROLE_USER];
+        $statuses = User::statuses();
+        $roles = User::roles();
         return view('admin.users.edit', compact('user', 'statuses', 'roles'));
     }
 

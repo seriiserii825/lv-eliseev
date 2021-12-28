@@ -26,3 +26,4 @@
 - 01:08:40 User in admin if refreshed db users
 - 01:58:00 verify and migration
 - 02:48:00 Roles test
+- 03:20:00 Role filter

@@ -47,6 +47,16 @@ class User extends Authenticatable
     public const ROLE_USER = 'user';
     public const ROLE_ADMIN = 'admin';
 
+    public static function statuses()
+    {
+        return [self::STATUS_ACTIVE, self::STATUS_WAIT];
+    }
+
+    public static function roles()
+    {
+        return [self::ROLE_USER, self::ROLE_ADMIN];
+    }
+
 
     protected $fillable = [
         'name', 'email', 'password', 'status', 'verify_token', 'role'

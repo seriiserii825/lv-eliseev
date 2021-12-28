@@ -3,6 +3,63 @@
 @section('content')
     @include('layouts.partials.tabs')
     <div class="admin__container">
+        <div class="admin__filter">
+            <form method="GET" action="?">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="form-group">
+                            <label for="id" class="col-md-3 col-form-label">Id</label>
+                            <input id="id" type="text" class="form-control" name="id" value="{{ request('id') }}">
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="name" class="col-md-3 col-form-label">Name</label>
+                            <input id="name" type="text" class="form-control" name="name" value="{{ request('name') }}">
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="email" class="col-md-3 col-form-label">Email</label>
+                            <input id="email" type="text" class="form-control" name="email"
+                                   value="{{ request('email') }}">
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="form-group">
+                            <label for="status" class="col-md-3 col-form-label">Status</label>
+                            <select name="status" id="status" class="form-control">
+                                <option value=""></option>
+                                @foreach($statuses as $status)
+                                    <option value="{{ $status }}"
+                                            @if($status === request('status')) selected @endif >{{ $status }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="form-group">
+                            <label for="role" class="col-md-3 col-form-label">Role</label>
+                            <select name="role" id="role" class="form-control">
+                                <option value=""></option>
+                                @foreach($roles as $role)
+                                    <option value="{{ $role }}"
+                                            @if($role === request('role')) selected @endif >{{ $role }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="form-group row mt-5">
+                            <div class="d-flex justify-content-end w-100 col-md-12">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <hr>
         <div class="admin__header">
             <a href="{{ route('admin.users.create') }}" class="btn btn-primary mb-5">New</a>
         </div>
