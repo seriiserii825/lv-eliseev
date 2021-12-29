@@ -1,13 +1,7 @@
 <?php
-
-
-// Note: Laravel will automatically resolve `Breadcrumbs::` without
-// this import. This is nice for IDE syntax and refactoring.
+use App\Models\Region;
 use App\User;
 use Diglactic\Breadcrumbs\Breadcrumbs;
-
-// This import is also not required, and you could replace `BreadcrumbTrail $trail`
-//  with `$trail`. This is nice for IDE type checking and completion.
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
 // Home
@@ -40,7 +34,7 @@ Breadcrumbs::for('admin.index', function ($trail) {
     $trail->push('Admin', route('admin.index'));
 });
 
-
+//================= Users
 Breadcrumbs::for('admin.users.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.index');
     $trail->push('Users', route('admin.users.index'));
@@ -59,4 +53,25 @@ Breadcrumbs::for('admin.users.show', function (BreadcrumbTrail $trail, User $use
 Breadcrumbs::for('admin.users.edit', function ($trail, User $user) {
     $trail->parent('admin.users.show', $user);
     $trail->push('Edit', route('admin.users.edit', $user));
+});
+
+//================= Regions
+Breadcrumbs::for('admin.regions.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.index');
+    $trail->push('Regions', route('admin.regions.index'));
+});
+
+Breadcrumbs::for('admin.regions.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.regions.index');
+    $trail->push('Create', route('admin.regions.create'));
+});
+
+Breadcrumbs::for('admin.regions.show', function (BreadcrumbTrail $trail, Region $region) {
+    $trail->parent('admin.regions.index');
+    $trail->push($region->name, route('admin.regions.show', $region));
+});
+
+Breadcrumbs::for('admin.regions.edit', function ($trail, Region $region) {
+    $trail->parent('admin.regions.show', $region);
+    $trail->push('Edit', route('admin.regions.edit', $region));
 });
