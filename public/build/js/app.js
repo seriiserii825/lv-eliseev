@@ -5,7 +5,7 @@
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -13,7 +13,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 // require('./bootstrap');
-console.log('webpack work'); // window.Vue = require('vue');
+var mySelect = __webpack_require__(/*! ./modules/my-select */ "./resources/js/modules/my-select.js"); // window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your
@@ -34,6 +34,29 @@ console.log('webpack work'); // window.Vue = require('vue');
 // const app = new Vue({
 //     el: '#app',
 // });
+
+
+if (document.querySelector('.my-select')) {
+  mySelect();
+}
+
+/***/ }),
+
+/***/ "./resources/js/modules/my-select.js":
+/*!*******************************************!*\
+  !*** ./resources/js/modules/my-select.js ***!
+  \*******************************************/
+/***/ ((module) => {
+
+var mySelect = function mySelect() {
+  var header = document.querySelector('.my-select__header');
+  var list = document.querySelector('.my-select ul');
+  header.addEventListener('click', function () {
+    list.classList.toggle('active');
+  });
+};
+
+module.exports = mySelect;
 
 /***/ }),
 

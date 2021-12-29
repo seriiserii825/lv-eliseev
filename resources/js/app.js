@@ -5,8 +5,7 @@
  */
 
 // require('./bootstrap');
-
-console.log('webpack work');
+const mySelect = require('./modules/my-select');
 
 // window.Vue = require('vue');
 
@@ -32,3 +31,7 @@ console.log('webpack work');
 // const app = new Vue({
 //     el: '#app',
 // });
+
+if(document.querySelector('.my-select')){
+    mySelect();
+}

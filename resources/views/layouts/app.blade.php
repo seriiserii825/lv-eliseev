@@ -24,40 +24,41 @@
             <div class="main-header__top">
                 <ul>
                     <li>
-                        <a href="{{ url('/') }}">
-                            {{ config('app.name', 'Laravel') }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('contact') }}">Contacts</a>
+                        <a href="{{ url('/') }}">Adverts</a>
                     </li>
                 </ul>
 
-                <ul class="main-header__menu">
+                <div class="main-header__menu">
                     @guest
-                        <ul>
-                            <li>
-                                <a href="{{ route('register') }}">Register</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('login') }}">Login</a>
-                            </li>
-                        </ul>
+                        <div class="my-select">
+                            <div class="my-select__header">
+                                <span>Select</span>
+                                <span class="my-select__icon">
+                                    @include('svg.caret-down')
+                                </span>
+                            </div>
+                            <ul>
+                                <li><a href="{{ route('register') }}">Register</a></li>
+                                <li><a href="{{ route('login') }}">Login</a></li>
+                            </ul>
+                        </div>
                     @else
-                        <ul>
-                            <li>
-                                <a href="#">{{ Auth::user()->email }}</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('admin.index') }}">Admin</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('logout') }}">Logout</a>
-                            </li>
-                        </ul>
-                @endauth
+                        <div>{{ Auth::user()->email }}</div>
+                        <div class="my-select">
+                            <div class="my-select__header">
+                                <span>Select</span>
+                                <span class="my-select__icon">
+                                    @include('svg.caret-down')
+                                </span>
+                            </div>
+                            <ul>
+                                <li><a href="{{ route('admin.index') }}">Admin</a></li>
+                                <li><a href="{{ route('logout') }}">Logout</a></li>
+                            </ul>
+                        </div>
+                    @endauth
+                </div>
             </div>
-        </div>
     </nav>
 
     <main class="main py-4">
