@@ -14,7 +14,7 @@ class CreateRegionsTable extends Migration
     public function up()
     {
         Schema::create('regions', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('name')->index();
             $table->string('slug');
             $table->integer('parent_id')->unsigned()->nullable();
