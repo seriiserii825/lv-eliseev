@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateRequest;
 use App\Models\Region;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class RegionController extends Controller
 {
@@ -17,12 +18,21 @@ class RegionController extends Controller
 
     public function create()
     {
-        return view('admin.regions.create');
+        $regions = Region::query()->where('parent_id', null)->orderBy('name')->get();
+        return view('admin.regions.create', compact('regions'));
     }
 
     public function store(Request $request)
     {
-
+        $request->validate([
+            'name' => 'required|string|max:255'
+        ]);
+        dd($request->parent_id);
+        Region::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'parent_id' => $request->parent_id
+        ]);
         return redirect()->route('admin.regions.index')->with('success', 'Region was created');
     }
 
