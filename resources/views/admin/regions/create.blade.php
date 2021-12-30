@@ -24,13 +24,13 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="regions"
+                                    <label for="parent_id"
                                            class="col-md-3 col-form-label">Regions</label>
                                     <div class="col-md-6">
-                                        <select name="regions" id="regions" class="form-control">
+                                        <select name="parent_id" id="parent_id" class="form-control">
+                                            <option value=""></option>
                                             @foreach($regions as $region)
-                                                <option value=""></option>
-                                                <option value="{{ $region->parent_id }}">{{ $region->name }}</option>
+                                                <option value="{{ $region->id }}">{{ $region->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>

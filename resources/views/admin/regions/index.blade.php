@@ -28,7 +28,7 @@
                     <td>{{ $region->parent ? $region->parent->name : '' }}</td>
                     <td>
                         @if($region->hasChildren())
-                        <span class="badge badge-success">Has children</span>
+                        <span class="badge badge-success">Has children {{ $region->hasChildren() }}</span>
                         @else
                             <span class="badge badge-danger">Don't have children</span>
                         @endif

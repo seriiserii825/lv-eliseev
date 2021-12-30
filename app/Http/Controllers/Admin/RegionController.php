@@ -27,12 +27,15 @@ class RegionController extends Controller
         $request->validate([
             'name' => 'required|string|max:255'
         ]);
-        dd($request->parent_id);
-        Region::create([
-            'name' => $request->name,
-            'slug' => Str::slug($request->name),
-            'parent_id' => $request->parent_id
-        ]);
+        try {
+            Region::create([
+                'name' => $request->name,
+                'slug' => Str::slug($request->name),
+                'parent_id' => $request->parent_id
+            ]);
+        }catch (\DomainException $e) {
+            return redirect()->route('admin.regions.index')->with('error', $e->getMessage());
+        }
         return redirect()->route('admin.regions.index')->with('success', 'Region was created');
     }
 

@@ -20,5 +20,4 @@ class Region extends Model
     public function hasChildren(){
         return count($this->children);
     }
-
 }
