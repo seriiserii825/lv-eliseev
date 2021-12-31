@@ -6,6 +6,8 @@
         <div class="admin__header">
             <a href="{{ route('admin.regions.create') }}" class="btn btn-primary mb-5">New</a>
         </div>
+        <h2 class="mb-4">Regions: ({{ $regions_count }})</h2>
+        <h2 class="mb-4">Villages: ({{ $regions_village }})</h2>
         <table class="table table-dark table-striped">
             <thead class="thead-dark">
             <tr>
@@ -28,13 +30,12 @@
                     <td>{{ $region->parent ? $region->parent->name : '' }}</td>
                     <td>
                         @if($region->hasChildren())
-                        <span class="badge badge-success">Has children {{ $region->hasChildren() }}</span>
+                            <span class="badge badge-success">Has children {{ $region->hasChildren() }}</span>
                         @else
                             <span class="badge badge-danger">Don't have children</span>
                         @endif
                     </td>
                     <td class="d-flex align-items-center">
-                        <a href="{{ route('admin.regions.edit', $region) }}" class="btn btn-success mr-3">Edit</a>
                         <form action="{{ route('admin.regions.destroy', $region->id) }}" method="post">
                             @csrf
                             @method('DELETE')

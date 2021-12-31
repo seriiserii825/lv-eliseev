@@ -12,8 +12,10 @@ class RegionController extends Controller
 {
     public function index(Request $request)
     {
-        $regions = Region::query()->where('parent_id', null)->orderBy('name')->paginate(10);
-        return view('admin.regions.index', compact('regions'));
+        $regions = Region::query()->where('parent_id', null)->orderBy('name')->paginate(100);
+        $regions_village = count(Region::query()->where('parent_id', '<>', null)->get());
+        $regions_count = count($regions);
+        return view('admin.regions.index', compact('regions', 'regions_count', 'regions_village'));
     }
 
     public function create()
