@@ -67,7 +67,11 @@ Breadcrumbs::for('admin.regions.create', function (BreadcrumbTrail $trail) {
 });
 
 Breadcrumbs::for('admin.regions.show', function (BreadcrumbTrail $trail, Region $region) {
-    $trail->parent('admin.regions.index');
+    if($region->parent){
+        $trail->parent('admin.regions.show', $region->parent);
+    }else{
+        $trail->parent('admin.regions.index');
+    }
     $trail->push($region->name, route('admin.regions.show', $region));
 });
 
