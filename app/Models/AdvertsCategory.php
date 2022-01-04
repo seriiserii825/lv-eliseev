@@ -14,4 +14,9 @@ class AdvertsCategory extends Model
     use NodeTrait;
     public $timestamps = false;
     protected $fillable = ['name', 'slug', 'parent_id'];
+
+    public function attributes()
+    {
+        return $this->hasMany(AdvertAttributes::class, 'advert_category_id', 'id');
+    }
 }
