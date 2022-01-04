@@ -33,5 +33,6 @@ Route::group([
     Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('index');
     Route::resource('users', '\App\Http\Controllers\Admin\UserController');
     Route::resource('regions', '\App\Http\Controllers\Admin\RegionController');
+    Route::resource('adverts_categories', '\App\Http\Controllers\Admin\AdvertsCategoryController');
     Route::post('/users/verify', [\App\Http\Controllers\Admin\UserController::class, 'verify'])->name('users.verify');
 });

@@ -12,6 +12,35 @@
 
 namespace App\Models{
 /**
+ * App\Models\AdvertsCategory
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int $_lft
+ * @property int $_rgt
+ * @property int|null $parent_id
+ * @property-read \Kalnoy\Nestedset\Collection|AdvertsCategory[] $children
+ * @property-read int|null $children_count
+ * @property-read AdvertsCategory|null $parent
+ * @method static \Kalnoy\Nestedset\Collection|static[] all($columns = ['*'])
+ * @method static \Illuminate\Database\Eloquent\Builder|AdvertsCategory d()
+ * @method static \Kalnoy\Nestedset\Collection|static[] get($columns = ['*'])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|AdvertsCategory newModelQuery()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|AdvertsCategory newQuery()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|AdvertsCategory query()
+ * @method static \Illuminate\Database\Eloquent\Builder|AdvertsCategory whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AdvertsCategory whereLft($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AdvertsCategory whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AdvertsCategory whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AdvertsCategory whereRgt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AdvertsCategory whereSlug($value)
+ */
+	class AdvertsCategory extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Region
  *
  * @property int $id

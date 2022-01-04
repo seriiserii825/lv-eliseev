@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Kalnoy\Nestedset\NodeTrait;
 
+/**
+ * @property defaultOrder
+ * @property withDepth
+ */
 class AdvertsCategory extends Model
 {
     use NodeTrait;

@@ -10,4 +10,9 @@
         <a href="{{ route('admin.regions.index') }}"
            class="nav-link {{ request()->is('admin/regions') || request()->is('admin/regions/create')|| request()->is('admin/regions/*') || request()->is('admin/regions/*/edit') ? 'active' : '' }}">Regions</a>
     </li>
+    <li class="nav-item">
+        <a href="{{ route('admin.adverts_categories.index') }}"
+           class="nav-link {{ request()->is('admin/adverts_categories') || request()->is('admin/adverts_categories/create')|| request()->is('admin/adverts_categories/*') || request()->is('admin/adverts_categories/*/edit') ? 'active' : '' }}">Adverts
+            Categories</a>
+    </li>
 </ul>

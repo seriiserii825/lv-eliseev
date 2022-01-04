@@ -1,4 +1,6 @@
 <?php
+
+use App\Models\AdvertsCategory;
 use App\Models\Region;
 use App\User;
 use Diglactic\Breadcrumbs\Breadcrumbs;
@@ -67,9 +69,9 @@ Breadcrumbs::for('admin.regions.create', function (BreadcrumbTrail $trail) {
 });
 
 Breadcrumbs::for('admin.regions.show', function (BreadcrumbTrail $trail, Region $region) {
-    if($region->parent){
+    if ($region->parent) {
         $trail->parent('admin.regions.show', $region->parent);
-    }else{
+    } else {
         $trail->parent('admin.regions.index');
     }
     $trail->push($region->name, route('admin.regions.show', $region));
@@ -78,4 +80,29 @@ Breadcrumbs::for('admin.regions.show', function (BreadcrumbTrail $trail, Region 
 Breadcrumbs::for('admin.regions.edit', function ($trail, Region $region) {
     $trail->parent('admin.regions.show', $region);
     $trail->push('Edit', route('admin.regions.edit', $region));
+});
+
+//========= Adverts categories
+Breadcrumbs::for('admin.adverts_categories.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.index');
+    $trail->push('Adverts Categories', route('admin.adverts_categories.index'));
+});
+
+Breadcrumbs::for('admin.adverts_categories.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.adverts_categories.index');
+    $trail->push('Create', route('admin.adverts_categories.create'));
+});
+
+Breadcrumbs::for('admin.adverts_categories.show', function (BreadcrumbTrail $trail, AdvertsCategory $advertsCategory) {
+    if ($advertsCategory->parent) {
+        $trail->parent('admin.adverts_categories.show', $advertsCategory->parent);
+    } else {
+        $trail->parent('admin.adverts_categories.index');
+    }
+    $trail->push($advertsCategory->name, route('admin.adverts_categories.show', $advertsCategory));
+});
+
+Breadcrumbs::for('admin.adverts_categories.edit', function ($trail, AdvertsCategory $advertsCategory) {
+    $trail->parent('admin.adverts_categories.show', $advertsCategory);
+    $trail->push('Edit', route('admin.adverts_categories.edit', $advertsCategory));
 });
