@@ -36,12 +36,15 @@ class AdvertsCategoryController extends Controller
         } catch (\DomainException $e) {
             return redirect()->route('admin.adverts_categories.index')->with('error', $e->getMessage());
         }
-        return redirect()->route('admin.adverts_categories.index')->with('success', 'Adverts category was created');
+
+        $categories = AdvertsCategory::query()->defaultOrder()->withDepth()->get();
+        return redirect()->route('admin.adverts_categories.index', compact('categories'))->with('success', 'Adverts category was created');
     }
 
     public function show(AdvertsCategory $advertsCategory)
     {
-        return view('admin.adverts_categories.show', compact('advertsCategory'));
+        $attributes = $advertsCategory->attributes()->orderBy('sort')->get();
+        return view('admin.adverts_categories.show', compact('advertsCategory', 'attributes'));
     }
 
     public function edit(AdvertsCategory $advertsCategory)

@@ -19,5 +19,36 @@
                 </div>
             </div>
         </div>
+
+        <p><a href="{{ route('admin.adverts_attributes.create', $advertsCategory) }}" class="btn btn-success">Add Attribute</a></p>
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Sort</th>
+                <th>Name</th>
+                <th>Slug</th>
+                <th>Required</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr><th colspan="4">Own attributes</th></tr>
+
+            @forelse ($attributes as $attribute)
+                <tr>
+                    <td>{{ $attribute->sort }}</td>
+                    <td>
+                        <a href="{{ route('admin.adverts_attributes.show', [$advertsCategory, $attribute]) }}">{{ $attribute->name }}</a>
+                    </td>
+                    <td>{{ $attribute->type }}</td>
+                    <td>{{ $attribute->required ? 'Yes' : '' }}</td>
+                </tr>
+            @empty
+                <tr><td colspan="4">None</td></tr>
+            @endforelse
+
+            </tbody>
+        </table>
     </div>
 @endsection

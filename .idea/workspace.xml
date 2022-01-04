@@ -178,11 +178,11 @@
       <recent name="$PROJECT_DIR$/resources/views/admin/users" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Http/Controllers/Admin" />
       <recent name="$PROJECT_DIR$/database/factories" />
       <recent name="$PROJECT_DIR$/app/Models" />
       <recent name="$PROJECT_DIR$/public/timeline" />
       <recent name="$PROJECT_DIR$/app" />
-      <recent name="$PROJECT_DIR$/resources/sass/modules/layouts" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

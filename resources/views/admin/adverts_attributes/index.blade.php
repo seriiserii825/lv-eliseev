@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
     @include('layouts.partials.tabs')
     <div class="admin__container">
