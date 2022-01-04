@@ -31,3 +31,4 @@
 - Code first - Entity - migration db
 
 #practice
+- 01:43:00 Nested sets clojure table 

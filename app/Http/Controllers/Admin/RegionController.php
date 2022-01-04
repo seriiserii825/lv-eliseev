@@ -49,7 +49,8 @@ class RegionController extends Controller
 
     public function edit(Region $region)
     {
-        return view('admin.regions.edit', compact('region'));
+        $regions = Region::query()->where('parent_id', null)->orderBy('name')->get();
+        return view('admin.regions.edit', compact('region', 'regions'));
     }
 
     public function update(UpdateRequest $request, Region $region)
