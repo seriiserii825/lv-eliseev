@@ -66,4 +66,33 @@ class AdvertsCategoryController extends Controller
         $advertsCategory->delete();
         return redirect()->route('admin.adverts_categories.index')->with('success', 'Adverts category was updated');
     }
+
+    public function first(AdvertsCategory $advertsCategory)
+    {
+        if ($first = $advertsCategory->siblings()->defaultOrder()->first()) {
+            $advertsCategory->insertBeforeNode($first);
+            return redirect()->route('admin.adverts_categories.index');
+        }
+    }
+
+    public function up(AdvertsCategory $advertsCategory)
+    {
+        $advertsCategory->up();
+        return redirect()->route('admin.adverts_categories.index');
+    }
+
+    public function down(AdvertsCategory $advertsCategory)
+    {
+        $advertsCategory->down();
+        return redirect()->route('admin.adverts_categories.index');
+    }
+
+    public function last(AdvertsCategory $advertsCategory)
+    {
+        if ($last = $advertsCategory->siblings()->defaultOrder('desc')->first()) {
+            $advertsCategory->insertAfterNode($last);
+            return redirect()->route('admin.adverts_categories.index');
+        }
+    }
+
 }

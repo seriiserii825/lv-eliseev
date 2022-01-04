@@ -32,3 +32,4 @@
 
 #practice
 - 01:43:00 Nested sets clojure table 
+- 02:36:00 Sort categories

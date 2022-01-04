@@ -13,6 +13,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Slug</th>
                 <th scope="col">Parent</th>
+                <th scope="col">Move</th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
@@ -26,7 +27,27 @@
                     </td>
                     <td>{{ $category->slug }}</td>
                     <td>{{ $category->parent ? $category->parent->name : '' }}</td>
-                    <td class="d-flex align-items-center">
+                    <td class="d-inline-flex align-items-center">
+                        <form action="{{ route('admin.adverts_categories.first', $category) }}" method="POST"
+                              class="mr-3">
+                            @csrf
+                            <button class="btn btn-primary">First</button>
+                        </form>
+                        <form action="{{ route('admin.adverts_categories.up', $category) }}" method="POST" class="mr-3">
+                            @csrf
+                            <button class="btn btn-primary">Up</button>
+                        </form>
+                        <form action="{{ route('admin.adverts_categories.down', $category) }}" method="POST"
+                              class="mr-3">
+                            @csrf
+                            <button class="btn btn-primary">Down</button>
+                        </form>
+                        <form action="{{ route('admin.adverts_categories.last', $category) }}" method="POST">
+                            @csrf
+                            <button class="btn btn-primary">Last</button>
+                        </form>
+                    </td>
+                    <td class="d-inline-flex align-items-center" style="margin-left: 10rem;">
                         <a class="btn btn-primary mr-3" href="{{ route('admin.adverts_categories.edit', $category) }}">Edit</a>
                         <form action="{{ route('admin.adverts_categories.destroy', $category->id) }}" method="post">
                             @csrf
