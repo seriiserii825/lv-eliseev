@@ -33,7 +33,7 @@
                             </div>
                             <div class="form-group row mb-0">
                                 <div class="d-flex justify-content-end w-100 col-md-12">
-                                    <button type="submit" class="btn btn-primary">Create</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </div>
                         </form>

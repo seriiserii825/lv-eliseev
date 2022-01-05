@@ -57,11 +57,34 @@ class AdvertAttributeController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'variants' => 'nullable|string'
+        ]);
+
+        $variants = StringHelper::toJson($request['variants']);
+
+        try {
+            $attribute = Attribute::findOrFail($id);
+            $attribute->update([
+                'name' => $request->name,
+                'slug' => Str::slug($request->name),
+                'variants' => json_encode($variants)
+            ]);
+        } catch (\DomainException $e) {
+            return redirect()->route('admin.adverts_attributes.index')->with('error', $e->getMessage());
+        }
+        return redirect()->route('admin.adverts_attributes.index')->with('success', 'Attribute was Updated');
     }
 
     public function destroy($id)
     {
-        //
+        try {
+            $attribute = Attribute::findOrFail($id);
+            $attribute->delete();
+            return redirect()->route('admin.adverts_attributes.index')->with('success', 'Attribute was deleted');
+        } catch (\DomainException $e) {
+            return redirect()->route('admin.adverts_attributes.index')->with('error', $e->getMessage());
+        }
     }
 }
