@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Advert\Variation;
 use App\Models\AdvertsCategory;
 use App\Models\Region;
 use App\User;
@@ -130,4 +131,25 @@ Breadcrumbs::for('admin.adverts_attributes.show', function (BreadcrumbTrail $tra
 Breadcrumbs::for('admin.adverts_attributes.edit', function ($trail, AdvertsCategory $advertsCategory) {
     $trail->parent('admin.adverts_attributes.show', $advertsCategory);
     $trail->push('Edit', route('admin.adverts_attributes.edit', $advertsCategory));
+});
+
+//============= Variations
+Breadcrumbs::for('admin.advert_variations.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.index');
+    $trail->push('Adverts Variations', route('admin.advert_variations.index'));
+});
+
+Breadcrumbs::for('admin.advert_variations.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.advert_variations.index');
+    $trail->push('Create', route('admin.advert_variations.create'));
+});
+
+Breadcrumbs::for('admin.advert_variations.show', function (BreadcrumbTrail $trail, $id) {
+    $trail->parent('admin.advert_variations.index');
+    $variation = Variation::findOrFail($id);
+    $trail->push($variation->name, route('admin.advert_variations.show', $id));
+});
+Breadcrumbs::for('admin.advert_variations.edit', function (BreadcrumbTrail $trail, $id) {
+    $trail->parent('admin.advert_variations.show', $id);
+    $trail->push('Edit', route('admin.advert_variations.edit', $id));
 });
