@@ -15,8 +15,4 @@
            class="nav-link {{ request()->is('admin/adverts_categories') || request()->is('admin/adverts_categories/create')|| request()->is('admin/adverts_categories/*') || request()->is('admin/adverts_categories/*/edit') ? 'active' : '' }}">Adverts
             Categories</a>
     </li>
-    <li class="nav-item">
-        <a href="{{ route('admin.adverts_attributes.index') }}"
-           class="nav-link {{ request()->is('admin/adverts_attributes') || request()->is('admin/adverts_attributes/create')|| request()->is('admin/adverts_attributes/*') || request()->is('admin/adverts_attributes/*/edit') ? 'active' : '' }}">Adverts Attributes</a>
-    </li>
 </ul>

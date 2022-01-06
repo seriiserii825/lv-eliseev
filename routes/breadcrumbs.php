@@ -107,25 +107,3 @@ Breadcrumbs::for('admin.adverts_categories.edit', function ($trail, AdvertsCateg
     $trail->parent('admin.adverts_categories.show', $advertsCategory);
     $trail->push('Edit', route('admin.adverts_categories.edit', $advertsCategory));
 });
-
-//========= Adverts attributes
-Breadcrumbs::for('admin.adverts_attributes.index', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.index');
-    $trail->push('Adverts Attributes', route('admin.adverts_attributes.index'));
-});
-
-Breadcrumbs::for('admin.adverts_attributes.create', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.adverts_attributes.index');
-    $trail->push('Create', route('admin.adverts_attributes.create'));
-});
-
-//Breadcrumbs::for('admin.adverts_attributes.show', function (BreadcrumbTrail $trail, Attribute $attribute) {
-//    $trail->parent('admin.adverts_attributes.index');
-//    $trail->push($attribute->name, route('admin.adverts_attributes.show', $attribute->id));
-//});
-
-Breadcrumbs::for('admin.adverts_attributes.edit', function ($trail, $attribute) {
-    $trail->parent('admin.adverts_attributes.index');
-    $trail->push('Edit', route('admin.adverts_attributes.edit', $attribute));
-});
-

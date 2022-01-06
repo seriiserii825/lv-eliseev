@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Advert\Attribute;
 use App\Models\AdvertsCategory;
@@ -35,13 +36,31 @@ class AdvertsCategoryController extends Controller
                 'slug' => Str::slug($request->name),
                 'parent_id' => $request->parent_id
             ]);
-            $attribute_id = $request['attribute_id'];
+            $category_id = $advertsCategory->id;
+
             $variants = array_map(function ($item) {
                 return ['variants' => $item];
             }, $request['variants']);
-            $result = array_combine($attribute_id, $variants);
-            $advertsCategory->attributes()->sync($result);
 
+            $attributes = array_map(function ($item) {
+                return ['attribute_id' => $item];
+            }, $request['attribute_id']);
+
+//            dd(count($attributes));
+            for ($i = 0; $i < count($attributes); $i++) {
+                $attributes_key = array_keys($attributes[$i])[0];
+                $attributes_value = array_values($attributes[$i])[0];
+                $variants_key = array_keys($variants[$i])[0];
+                $variants_value = array_values($variants[$i])[0];
+                $advertsCategory->attributes()->sync([$category_id => [
+                    $attributes_key => $attributes_value,
+                    $variants_key => StringHelper::toJson($variants_value),
+                ]]);
+//                dump($attributes_key => $attributes_value);
+//                dd($variants[$i]);
+//                $advertsCategory->attributes()->sync([$category_id => [
+//                ]]);
+            }
         } catch (\DomainException $e) {
             return redirect()->route('admin.adverts_categories.index')->with('error', $e->getMessage());
         }

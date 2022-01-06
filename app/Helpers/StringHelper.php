@@ -6,7 +6,7 @@ class StringHelper
 {
     public static function toJson($str)
     {
-        return array_map('trim', preg_split('#[\r\n]+#', $str));
+        return json_encode(array_map('trim', preg_split('#[\r\n]+#', $str)));
     }
 
     public static function fromJson($array)
