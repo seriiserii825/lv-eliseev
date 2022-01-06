@@ -9,7 +9,7 @@ class CreateAdvertsCategoriesAttributesTable extends Migration
     public function up()
     {
         Schema::create('adverts_categories_attributes', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->integer('adverts_category_id');
             $table->foreign('adverts_category_id')->references('id')->on('adverts_categories');
             $table->integer('attribute_id');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Advert\Attribute;
 use App\Models\AdvertsCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -18,7 +19,8 @@ class AdvertsCategoryController extends Controller
     public function create()
     {
         $parents = AdvertsCategory::query()->defaultOrder()->withDepth()->get();
-        return view('admin.adverts_categories.create', compact('parents'));
+        $attributes = Attribute::all();
+        return view('admin.adverts_categories.create', compact('parents', 'attributes'));
     }
 
     public function store(Request $request)
@@ -28,11 +30,18 @@ class AdvertsCategoryController extends Controller
             'parent_id' => 'nullable|integer|exists:adverts_categories,id'
         ]);
         try {
-            AdvertsCategory::create([
+            $advertsCategory = AdvertsCategory::create([
                 'name' => $request->name,
                 'slug' => Str::slug($request->name),
                 'parent_id' => $request->parent_id
             ]);
+            $attribute_id = $request['attribute_id'];
+            $variants = array_map(function ($item) {
+                return ['variants' => $item];
+            }, $request['variants']);
+            $result = array_combine($attribute_id, $variants);
+            $advertsCategory->attributes()->sync($result);
+
         } catch (\DomainException $e) {
             return redirect()->route('admin.adverts_categories.index')->with('error', $e->getMessage());
         }

@@ -13,6 +13,6 @@ class StringHelper
     {
         $variants_array = json_decode($array);
         $variants_str = implode(PHP_EOL, $variants_array);
-        return html_entity_decode($variants_str);
+        return trim(html_entity_decode($variants_str));
     }
 }

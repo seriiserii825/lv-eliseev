@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Advert\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Kalnoy\Nestedset\NodeTrait;
 
@@ -17,6 +18,6 @@ class AdvertsCategory extends Model
 
     public function attributes()
     {
-        return $this->hasMany(AdvertAttributes::class, 'advert_category_id', 'id');
+        return $this->belongsToMany(Attribute::class, 'adverts_categories_attributes', 'adverts_category_id', 'id')->withPivot('variants');
     }
 }
