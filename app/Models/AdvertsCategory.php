@@ -14,6 +14,6 @@ class AdvertsCategory extends Model
 
     public function attributes()
     {
-        return $this->belongsToMany(Attribute::class, 'adverts_categories_attributes', 'adverts_category_id', 'id');
+        return $this->hasMany(Attribute::class, 'category_id', 'id');
     }
 }

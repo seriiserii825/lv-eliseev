@@ -20,29 +20,40 @@
             </div>
         </div>
 
-        <p><a href="{{ route('admin.adverts_attributes.create', $advertsCategory) }}" class="btn btn-success">Add Attribute</a></p>
+        <p class="mb-5"><a href="{{ route('admin.adverts_attributes.create', ['category_id' => $advertsCategory->id]) }}" class="btn btn-success">Add Attribute</a></pc>
 
         <table class="table table-bordered">
             <thead>
             <tr>
+                <th>Id</th>
                 <th>Sort</th>
                 <th>Name</th>
                 <th>Slug</th>
                 <th>Required</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
 
-            <tr><th colspan="4">Own attributes</th></tr>
-
             @forelse ($attributes as $attribute)
                 <tr>
+                    <td>{{ $attribute->id }}</td>
                     <td>{{ $attribute->sort }}</td>
                     <td>
                         <a href="{{ route('admin.adverts_attributes.show', [$advertsCategory, $attribute]) }}">{{ $attribute->name }}</a>
                     </td>
                     <td>{{ $attribute->type }}</td>
                     <td>{{ $attribute->required ? 'Yes' : '' }}</td>
+
+                    <td class="d-flex">
+                        <a class="btn btn-success mr-2" href="{{ route('admin.adverts_attributes.edit', [$attribute]) }}">Edit</a>
+
+                        <form action="{{ route('admin.adverts_attributes.destroy', $attribute->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             @empty
                 <tr><td colspan="4">None</td></tr>

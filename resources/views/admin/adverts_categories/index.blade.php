@@ -12,6 +12,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Slug</th>
                 <th scope="col">Parent</th>
+                <th scope="col">Attributes Count</th>
                 <th scope="col">Move</th>
                 <th scope="col">Actions</th>
             </tr>
@@ -26,6 +27,13 @@
                     </td>
                     <td>{{ $category->slug }}</td>
                     <td>{{ $category->parent ? $category->parent->name : '' }}</td>
+                    <td>
+                        @if(count($category->attributes) > 0)
+                            <span class="badge badge-success">{{ count($category->attributes) }}</span>
+                            @else
+                            <span class="badge badge-danger">{{ count($category->attributes) }}</span>
+                        @endif
+                    </td>
                     <td class="d-inline-flex align-items-center">
                         <form action="{{ route('admin.adverts_categories.first', $category) }}" method="POST"
                               class="mr-3">

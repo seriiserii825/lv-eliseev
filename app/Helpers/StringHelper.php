@@ -11,8 +11,7 @@ class StringHelper
 
     public static function fromJson($array)
     {
-        $variants_array = json_decode($array);
-        $variants_str = implode(PHP_EOL, $variants_array);
+        $variants_str = implode(PHP_EOL, $array);
         return trim(html_entity_decode($variants_str));
     }
 }

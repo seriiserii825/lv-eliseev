@@ -5,8 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ebff7dd5-8de5-46ca-a945-12c7462bf4b4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/adverts/attributes/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/adverts/attributes/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/adverts/attributes/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/adverts/attributes/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Helpers/StringHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/StringHelper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdvertsCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdvertsCategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Adverts/Attribute.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Adverts/Attribute.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/AdvertsCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AdvertsCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_01_07_110606_create_attributes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_01_07_110606_create_attributes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/adverts_categories/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/adverts_categories/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/adverts_categories/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/adverts_categories/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/breadcrumbs.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/breadcrumbs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

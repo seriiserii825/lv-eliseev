@@ -12,7 +12,7 @@ class CreateAttributesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('category_id');
             $table->foreign('category_id')->references('id')->on('adverts_categories')->onDelete('CASCADE');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('type');
             $table->boolean('required');
             $table->json('variants');

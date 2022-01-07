@@ -40,5 +40,5 @@ Route::group([
     Route::post('/adverts_categories/{adverts_category}/up', [AdvertsCategoryController::class, 'up'])->name('adverts_categories.up');
     Route::post('/adverts_categories/{adverts_category}/down', [AdvertsCategoryController::class, 'down'])->name('adverts_categories.down');
     Route::post('/adverts_categories/{adverts_category}/last', [AdvertsCategoryController::class, 'last'])->name('adverts_categories.last');
-    Route::resource('adverts_attributes', '\App\Http\Controllers\Admin\AdvertAttributeController');
+    Route::resource('adverts_attributes', '\App\Http\Controllers\Admin\Adverts\AttributeController');
 });

@@ -13,15 +13,14 @@ class AdvertsCategoryController extends Controller
 {
     public function index()
     {
-        $categories = AdvertsCategory::query()->defaultOrder()->withDepth()->get();
+        $categories = AdvertsCategory::query()->defaultOrder()->withDepth()->with('attributes')->get();
         return view('admin.adverts_categories.index', compact('categories'));
     }
 
     public function create()
     {
         $parents = AdvertsCategory::query()->defaultOrder()->withDepth()->get();
-        $attributes = Attribute::all();
-        return view('admin.adverts_categories.create', compact('parents', 'attributes'));
+        return view('admin.adverts_categories.create', compact('parents'));
     }
 
     public function store(Request $request)
@@ -36,31 +35,6 @@ class AdvertsCategoryController extends Controller
                 'slug' => Str::slug($request->name),
                 'parent_id' => $request->parent_id
             ]);
-            $category_id = $advertsCategory->id;
-
-            $variants = array_map(function ($item) {
-                return ['variants' => $item];
-            }, $request['variants']);
-
-            $attributes = array_map(function ($item) {
-                return ['attribute_id' => $item];
-            }, $request['attribute_id']);
-
-//            dd(count($attributes));
-            for ($i = 0; $i < count($attributes); $i++) {
-                $attributes_key = array_keys($attributes[$i])[0];
-                $attributes_value = array_values($attributes[$i])[0];
-                $variants_key = array_keys($variants[$i])[0];
-                $variants_value = array_values($variants[$i])[0];
-                $advertsCategory->attributes()->sync([$category_id => [
-                    $attributes_key => $attributes_value,
-                    $variants_key => StringHelper::toJson($variants_value),
-                ]]);
-//                dump($attributes_key => $attributes_value);
-//                dd($variants[$i]);
-//                $advertsCategory->attributes()->sync([$category_id => [
-//                ]]);
-            }
         } catch (\DomainException $e) {
             return redirect()->route('admin.adverts_categories.index')->with('error', $e->getMessage());
         }

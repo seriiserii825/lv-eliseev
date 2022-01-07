@@ -18,7 +18,7 @@ class Attribute extends Model
     public const TYPE_FLOAT = 'float';
 
     protected $table = 'adverts_attributes';
-    protected $fillable = ['name', 'type', 'required', 'variants', 'sort'];
+    protected $fillable = ['name', 'type', 'required', 'variants', 'sort', 'category_id'];
 
     protected $casts = ['variants' => 'array'];
 

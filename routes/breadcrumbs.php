@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\Adverts\Attribute;
 use App\Models\AdvertsCategory;
-use App\Models\Advert\Attribute;
 use App\Models\Region;
 use App\User;
 use Diglactic\Breadcrumbs\Breadcrumbs;
@@ -106,4 +106,21 @@ Breadcrumbs::for('admin.adverts_categories.show', function (BreadcrumbTrail $tra
 Breadcrumbs::for('admin.adverts_categories.edit', function ($trail, AdvertsCategory $advertsCategory) {
     $trail->parent('admin.adverts_categories.show', $advertsCategory);
     $trail->push('Edit', route('admin.adverts_categories.edit', $advertsCategory));
+});
+//================= Attributes
+Breadcrumbs::for('admin.adverts_attributes.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.adverts_categories.index');
+    $trail->push('Create', route('admin.adverts_attributes.create'));
+});
+
+Breadcrumbs::for('admin.adverts_attributes.show', function (BreadcrumbTrail $trail, $id) {
+    $trail->parent('admin.adverts_categories.index');
+    $attribute = Attribute::findOrFail($id);
+    $trail->push($attribute->name, route('admin.adverts_attributes.show', $attribute));
+});
+
+Breadcrumbs::for('admin.adverts_attributes.edit', function (BreadcrumbTrail $trail, $id) {
+    $trail->parent('admin.adverts_categories.index');
+    $attribute = Attribute::findOrFail($id);
+    $trail->push('Edit', route('admin.adverts_attributes.edit', $attribute));
 });
