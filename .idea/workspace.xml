@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ebff7dd5-8de5-46ca-a945-12c7462bf4b4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e18bc7cd-3433-4985-958e-14923ce2acb3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e18bc7cd-3433-4985-958e-14923ce2acb3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="DONT_SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" notifyAboutMissingVendor="false" synchronizationState="DONT_SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -27,6 +27,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
@@ -175,7 +178,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lv-avanasiev.loc" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -214,6 +217,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
