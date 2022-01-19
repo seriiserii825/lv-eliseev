@@ -107,6 +107,17 @@ class User extends Authenticatable
         ]);
     }
 
+    public function setAdmin(): void
+    {
+        if ($this->isAdmin()) {
+            throw new \DomainException('User is already admin.');
+        }
+
+        $this->update([
+            'role' => self::ROLE_ADMIN
+        ]);
+    }
+
     protected $hidden = [
         'password', 'remember_token',
     ];

@@ -24,4 +24,9 @@ class RegisterService {
         $user = User::query()->findOrFail($id);
         $user->verify();
     }
+
+    public function makeAdmin($id){
+        $user = User::query()->findOrFail($id);
+        $user->setAdmin();
+    }
 }
