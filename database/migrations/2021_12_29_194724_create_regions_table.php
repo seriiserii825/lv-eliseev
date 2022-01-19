@@ -17,7 +17,7 @@ class CreateRegionsTable extends Migration
             $table->increments('id');
             $table->string('name')->index();
             $table->string('slug');
-            $table->integer('parent_id')->unsigned()->nullable();
+            $table->unsignedInteger('parent_id')->unsigned()->nullable();
             $table->foreign('parent_id')->references('id')->on('regions')->onDelete('CASCADE');
             $table->unique(['parent_id', 'name']);
             $table->unique(['parent_id', 'slug']);
