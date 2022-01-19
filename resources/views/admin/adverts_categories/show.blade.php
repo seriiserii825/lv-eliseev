@@ -20,7 +20,9 @@
             </div>
         </div>
 
-        <p class="mb-5"><a href="{{ route('admin.adverts_attributes.create', ['category_id' => $advertsCategory->id]) }}" class="btn btn-success">Add Attribute</a></pc>
+        <p class="mb-5"><a
+                href="{{ route('admin.adverts_attributes.create', ['category_id' => $advertsCategory->id]) }}"
+                class="btn btn-success">Add Attribute</a></p>
 
         <table class="table table-bordered">
             <thead>
@@ -46,9 +48,12 @@
                     <td>{{ $attribute->required ? 'Yes' : '' }}</td>
 
                     <td class="d-flex">
-                        <a class="btn btn-success mr-2" href="{{ route('admin.adverts_attributes.edit', [$attribute]) }}">Edit</a>
+                        <a class="btn btn-success mr-2"
+                           href="{{ route('admin.adverts_attributes.edit', [$attribute->id, 'category_id' =>$advertsCategory->id]) }}">Edit</a>
 
-                        <form action="{{ route('admin.adverts_attributes.destroy', $attribute->id) }}" method="post">
+                        <form
+                            action="{{ route('admin.adverts_attributes.destroy', [$attribute->id]) }}"
+                            method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
@@ -56,7 +61,9 @@
                     </td>
                 </tr>
             @empty
-                <tr><td colspan="4">None</td></tr>
+                <tr>
+                    <td colspan="4">None</td>
+                </tr>
             @endforelse
 
             </tbody>

@@ -50,10 +50,10 @@ class AttributeController extends Controller
         return view('admin.adverts.attributes.show', compact('attribute', 'category'));
     }
 
-    public function edit($id, Request $request)
+    public function edit(Request $request, $id)
     {
         $types = Attribute::typesList();
-        $category = AdvertsCategory::findOrFail($request->get('category'));
+        $category = AdvertsCategory::findOrFail($request->get('category_id'));
         $attribute = Attribute::findOrFail($id);
         return view('admin.adverts.attributes.edit', compact('attribute', 'category', 'types'));
     }

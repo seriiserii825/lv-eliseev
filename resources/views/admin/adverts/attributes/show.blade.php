@@ -1,9 +1,10 @@
 @extends('layouts.app')
 @section('content')
     @include('layouts.partials.tabs')
-    <h2 class="card-block mb-5"><strong>View category: </strong><a href="{{ route('admin.adverts_categories.show', [$category]) }}">{{ $category->name }}</a></h2>
+    <h2 class="card-block mb-5"><strong>View category: </strong><a
+            href="{{ route('admin.adverts_categories.show', [$category]) }}">{{ $category->name }}</a></h2>
     <div class="d-flex flex-row mb-3">
-        <a href="{{ route('admin.adverts_attributes.edit', [$attribute, 'category' => $category]) }}"
+        <a href="{{ route('admin.adverts_attributes.edit', [$attribute->id, 'category_id' => $category->id]) }}"
            class="btn btn-primary mr-1">Edit</a>
         <form method="POST"
               action="{{ route('admin.adverts_attributes.destroy', [ $attribute, 'category' => $category]) }}"
