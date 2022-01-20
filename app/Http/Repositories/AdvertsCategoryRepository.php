@@ -35,6 +35,16 @@ class AdvertsCategoryRepository implements AdvertsCategoryRepositoryInterface
             ->get();
     }
 
+    public function getAllWithAttributesAndOrder($sort)
+    {
+        $fillableColumns = AdvertsCategory::FILLABLECOLUMNS;
+        return AdvertsCategory::query()
+            ->attributes()
+            ->orderBy($sort)
+            ->select($fillableColumns)
+            ->get();
+    }
+
     public function getOne($id)
     {
         return AdvertsCategory::query()->findOrFail($id);
