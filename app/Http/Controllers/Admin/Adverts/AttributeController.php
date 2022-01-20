@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Adverts;
 
 use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Repositories\AdvertsAttributeRepository;
 use App\Http\Requests\AdvertsAttribute\AdvertsAttributeStoreRequest;
 use App\Http\Requests\AdvertsAttribute\AdvertsAttributeUpdateRequest;
 use App\Models\Adverts\Attribute;
@@ -13,8 +14,12 @@ use Illuminate\Validation\Rule;
 
 class AttributeController extends Controller
 {
-    public function index()
+    private $advertsAttributeRepository;
+    private $advertsCategoryRepository;
+
+    public function __construct(AdvertsAttributeRepository $advertsAttributeRepository)
     {
+        $this->advertsAttributeRepository = $advertsAttributeRepository;
     }
 
     public function create(Request $request)
@@ -41,7 +46,7 @@ class AttributeController extends Controller
     public function show($id, Request $request)
     {
         $category = AdvertsCategory::findOrFail($request->get('category'));
-        $attribute = Attribute::findOrFail($id);
+        $attribute = $this->advertsAttributeRepository->getOne($id);
         return view('admin.adverts.attributes.show', compact('attribute', 'category'));
     }
 
@@ -49,13 +54,13 @@ class AttributeController extends Controller
     {
         $types = Attribute::typesList();
         $category = AdvertsCategory::findOrFail($request->get('category_id'));
-        $attribute = Attribute::findOrFail($id);
+        $attribute = $this->advertsAttributeRepository->getOne($id);
         return view('admin.adverts.attributes.edit', compact('attribute', 'category', 'types'));
     }
 
     public function update(AdvertsAttributeUpdateRequest $request, $id)
     {
-        $attribute = Attribute::findOrFail($id);
+        $attribute = $this->advertsAttributeRepository->getOne($id);
         $attribute->update([
             'name' => $request['name'],
             'type' => $request['type'],
@@ -68,7 +73,7 @@ class AttributeController extends Controller
 
     public function destroy($id)
     {
-        $attribute = Attribute::findOrFail($id);
+        $attribute = $this->advertsAttributeRepository->getOne($id);
         $attribute->delete();
         return view('admin.index');
     }
