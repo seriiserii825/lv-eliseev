@@ -63,7 +63,6 @@ class UserController extends Controller
         } catch (QueryException $e) {
             return back()->withErrors(['msg' => $e->getMessage()]);
         }
-
     }
 
     public function destroy(User $user)
