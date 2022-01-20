@@ -2,30 +2,30 @@
 
 namespace App\Http\Controllers\Admin\Adverts;
 
-use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\AdvertsAttributeRepository;
+use App\Http\Repositories\AdvertsCategoryRepository;
 use App\Http\Requests\AdvertsAttribute\AdvertsAttributeStoreRequest;
 use App\Http\Requests\AdvertsAttribute\AdvertsAttributeUpdateRequest;
 use App\Models\Adverts\Attribute;
 use App\Models\AdvertsCategory;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class AttributeController extends Controller
 {
     private $advertsAttributeRepository;
     private $advertsCategoryRepository;
 
-    public function __construct(AdvertsAttributeRepository $advertsAttributeRepository)
+    public function __construct()
     {
-        $this->advertsAttributeRepository = $advertsAttributeRepository;
+        $this->advertsAttributeRepository = app(AdvertsAttributeRepository::class);
+        $this->advertsCategoryRepository = app(AdvertsCategoryRepository::class);
     }
 
     public function create(Request $request)
     {
         $types = Attribute::typesList();
-        $category = AdvertsCategory::findOrFail($request->get('category_id'));
+        $category = $this->advertsCategoryRepository->getOne(($request->get('category_id')));
         return view('admin.adverts.attributes.create', compact('category', 'types'));
     }
 
@@ -45,7 +45,7 @@ class AttributeController extends Controller
 
     public function show($id, Request $request)
     {
-        $category = AdvertsCategory::findOrFail($request->get('category'));
+        $category = $this->advertsCategoryRepository->getOne(($request->get('category')));
         $attribute = $this->advertsAttributeRepository->getOne($id);
         return view('admin.adverts.attributes.show', compact('attribute', 'category'));
     }
@@ -53,7 +53,7 @@ class AttributeController extends Controller
     public function edit(Request $request, $id)
     {
         $types = Attribute::typesList();
-        $category = AdvertsCategory::findOrFail($request->get('category_id'));
+        $category = $this->advertsCategoryRepository->getOne(($request->get('category_id'))) ;
         $attribute = $this->advertsAttributeRepository->getOne($id);
         return view('admin.adverts.attributes.edit', compact('attribute', 'category', 'types'));
     }

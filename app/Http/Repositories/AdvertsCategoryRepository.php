@@ -17,6 +17,6 @@ class AdvertsCategoryRepository implements AdvertsCategoryRepositoryInterface
 
     public function getOne($id)
     {
-        return AdvertsCategory::query()->find($id);
+        return AdvertsCategory::query()->findOrFail($id);
     }
 }
