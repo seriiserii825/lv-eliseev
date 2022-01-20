@@ -2,7 +2,7 @@
 @section('content')
     @include('layouts.partials.tabs')
     <h2 class="card-block mb-5"><strong>View category: </strong><a
-            href="{{ route('admin.adverts_categories.show', [$category]) }}">{{ $category->name }}</a></h2>
+            href="{{ route('admin.adverts_categories.show', [$category]) }}" class="btn btn-success">{{ $category->name }}</a></h2>
     <div class="d-flex flex-row mb-3">
         <a href="{{ route('admin.adverts_attributes.edit', [$attribute->id, 'category_id' => $category->id]) }}"
            class="btn btn-primary mr-1">Edit</a>

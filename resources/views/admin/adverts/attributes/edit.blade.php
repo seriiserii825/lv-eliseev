@@ -4,7 +4,10 @@
     <div class="admin-container">
         <div class="row">
             <div class="col-md-6">
-                <h2 class="card-block mb-5"><strong>View category: </strong><a href="{{ route('admin.adverts_categories.show', [$category]) }}">{{ $category->name }}</a></h2>
+                <h2 class="card-block mb-5">
+                    <strong>View category: </strong>
+                    <a href="{{ route('admin.adverts_categories.show', [$category]) }}" class="btn btn-success">{{ $category->name }}</a>
+                </h2>
                 <div class="card">
                     <div class="card-header">Edit</div>
                     <div class="card-body p-5">

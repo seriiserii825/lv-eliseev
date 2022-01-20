@@ -5,37 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b803ff4b-0724-42bd-88fb-7bdc939ded6d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/lv-eliseev.loc.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Laravel_12_1_21__3_35_PM.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e18bc7cd-3433-4985-958e-14923ce2acb3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e18bc7cd-3433-4985-958e-14923ce2acb3/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e18bc7cd-3433-4985-958e-14923ce2acb3/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e18bc7cd-3433-4985-958e-14923ce2acb3/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e18bc7cd-3433-4985-958e-14923ce2acb3/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/serii.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-plugin.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/lv-eliseev.local.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webResources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webResources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Adverts/AttributeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Adverts/AttributeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_01_07_110606_create_attributes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_01_07_110606_create_attributes_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/adverts_categories/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/adverts_categories/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdvertsCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdvertsCategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/adverts/attributes/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/adverts/attributes/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/adverts/attributes/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/adverts/attributes/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/partials/flash.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/partials/flash.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="DONT_SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="DONT_SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -203,10 +185,6 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
-      <option name="pathToComposerJson" value="$PROJECT_DIR$/composer.json" />
-      <method v="2" />
-    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />

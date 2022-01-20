@@ -68,8 +68,9 @@ class AdvertsCategoryController extends Controller
 
     public function destroy(AdvertsCategory $advertsCategory)
     {
+        $categoryName = $advertsCategory->name;
         $advertsCategory->delete();
-        return redirect()->route('admin.adverts_categories.index')->with('success', 'Adverts category was updated');
+        return redirect()->route('admin.adverts_categories.index')->with('success', "Adverts category ${categoryName} was deleted");
     }
 
     public function first(AdvertsCategory $advertsCategory)
