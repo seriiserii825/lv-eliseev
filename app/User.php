@@ -62,6 +62,8 @@ class User extends Authenticatable
         'name', 'email', 'password', 'status', 'verify_token', 'role'
     ];
 
+    const FILLABLE_COLUMNS = ['name', 'email', 'password', 'status', 'verify_token', 'role'];
+
     public static function register(string $name, string $email, string $password): self
     {
         return static::create([

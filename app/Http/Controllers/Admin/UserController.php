@@ -3,32 +3,26 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Repositories\UserRepository;
 use App\Http\Requests\CreateRequest;
 use App\Http\Requests\UpdateRequest;
 use App\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    private $userRepository;
+
+    public function __construct()
+    {
+        $this->userRepository = app(UserRepository::class);
+    }
+
+
     public function index(Request $request)
     {
-        $query = User::query()->orderByDesc('updated_at');
-        if (!empty($value = $request->get('id'))) {
-            $query->where('id', $value);
-        }
-        if (!empty($value = $request->get('email'))) {
-            $query->where('email', 'like', '%' . $value . '%');
-        }
-        if (!empty($value = $request->get('name'))) {
-            $query->where('name', 'like', '%' . $value . '%');
-        }
-        if (!empty($value = $request->get('status'))) {
-            $query->where('status', $value);
-        }
-        if (!empty($value = $request->get('role'))) {
-            $query->where('role', $value);
-        }
-        $users = $query->paginate(40);
+        $users = $this->userRepository->getByFilter($request);
         $statuses = User::statuses();
         $roles = User::roles();
         return view('admin.users.index', compact('users', 'statuses', 'roles'));
@@ -41,10 +35,12 @@ class UserController extends Controller
 
     public function store(CreateRequest $request)
     {
-
-        User::register($request['name'], $request['email'], $request['password']);
-
-        return redirect()->route('admin.users.index')->with('success', 'User was created');
+        try {
+            User::register($request['name'], $request['email'], $request['password']);
+            return redirect()->route('admin.users.index')->with('success', 'User was created');
+        } catch (QueryException $e) {
+            return back()->withErrors(['msg' => $e->getMessage()]);
+        }
     }
 
     public function show(User $user)
@@ -61,9 +57,13 @@ class UserController extends Controller
 
     public function update(UpdateRequest $request, User $user)
     {
-        $user->update($request->only(['name', 'email', 'status', 'role']));
+        try {
+            $user->update($request->only(['name', 'email', 'status', 'role']));
+            return redirect()->route('admin.users.index')->with('success', 'User was updated');
+        } catch (QueryException $e) {
+            return back()->withErrors(['msg' => $e->getMessage()]);
+        }
 
-        return redirect()->route('admin.users.index')->with('success', 'User was updated');
     }
 
     public function destroy(User $user)
