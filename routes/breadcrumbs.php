@@ -94,17 +94,14 @@ Breadcrumbs::for('admin.adverts_categories.create', function (BreadcrumbTrail $t
     $trail->push('Create', route('admin.adverts_categories.create'));
 });
 
-Breadcrumbs::for('admin.adverts_categories.show', function (BreadcrumbTrail $trail, AdvertsCategory $advertsCategory) {
-    if ($advertsCategory->parent) {
-        $trail->parent('admin.adverts_categories.show', $advertsCategory->parent);
-    } else {
-        $trail->parent('admin.adverts_categories.index');
-    }
+Breadcrumbs::for('admin.adverts_categories.show', function (BreadcrumbTrail $trail, $id) {
+    $advertsCategory = AdvertsCategory::query()->find($id);
+    $trail->parent('admin.adverts_categories.index');
     $trail->push($advertsCategory->name, route('admin.adverts_categories.show', $advertsCategory));
 });
 
-Breadcrumbs::for('admin.adverts_categories.edit', function ($trail, AdvertsCategory $advertsCategory) {
-    $trail->parent('admin.adverts_categories.show', $advertsCategory);
+Breadcrumbs::for('admin.adverts_categories.edit', function (BreadcrumbTrail $trail, $id) {
+    $advertsCategory = AdvertsCategory::find($id);
     $trail->push('Edit', route('admin.adverts_categories.edit', $advertsCategory));
 });
 //================= Attributes

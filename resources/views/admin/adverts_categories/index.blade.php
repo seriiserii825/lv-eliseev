@@ -55,7 +55,7 @@
                         </form>
                     </td>
                     <td class="d-inline-flex align-items-center" style="margin-left: 10rem;">
-                        <a class="btn btn-primary mr-3" href="{{ route('admin.adverts_categories.edit', $category) }}">Edit</a>
+                        <a class="btn btn-primary mr-3" href="{{ route('admin.adverts_categories.edit', $category->id) }}">Edit</a>
                         <form action="{{ route('admin.adverts_categories.destroy', $category->id) }}" method="post">
                             @csrf
                             @method('DELETE')

@@ -1,7 +1,13 @@
 @extends('layouts.app')
+@php /** @var \App\Models\AdvertsCategory $advertsCategory  */ @endphp
 @section('content')
     @include('layouts.partials.tabs')
     <div class="admin-container">
+        <div class="mb-5">
+            <a href="{{ route('admin.adverts_categories.edit', $advertsCategory->id) }}"
+               class="btn btn-primary">Edit</a>
+        </div>
+
         <div class="row mb-5">
             <div class="col-md-3">
                 <div class="card">
@@ -19,7 +25,6 @@
                 </div>
             </div>
         </div>
-
         <p class="mb-5"><a
                 href="{{ route('admin.adverts_attributes.create', ['category_id' => $advertsCategory->id]) }}"
                 class="btn btn-success">Add Attribute</a></p>

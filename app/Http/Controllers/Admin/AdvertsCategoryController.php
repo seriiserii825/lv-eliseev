@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\AdvertsCategoryRepository;
+use App\Http\Requests\Adverts\AdvertsCategoryCreateRequest;
+use App\Http\Requests\Adverts\AdvertsCategoryUpdateRequest;
 use App\Models\Advert\Attribute;
 use App\Models\AdvertsCategory;
+use Doctrine\DBAL\Query\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -31,24 +34,20 @@ class AdvertsCategoryController extends Controller
         return view('admin.adverts_categories.create', compact('parents'));
     }
 
-    public function store(Request $request)
+    public function store(AdvertsCategoryCreateRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'parent_id' => 'nullable|integer|exists:adverts_categories,id'
-        ]);
         try {
             $advertsCategory = AdvertsCategory::create([
                 'name' => $request->name,
                 'slug' => Str::slug($request->name),
                 'parent_id' => $request->parent_id
             ]);
+            $catName = $advertsCategory->name;
+            $categories = $this->categoryRepository->getAllWithDepth();
+            return redirect()->route('admin.adverts_categories.index', compact('categories'))->with('success', "Adverts category ${catName} was created");
         } catch (\DomainException $e) {
             return redirect()->route('admin.adverts_categories.index')->with('error', $e->getMessage());
         }
-
-        $categories = AdvertsCategory::query()->defaultOrder()->withDepth()->get();
-        return redirect()->route('admin.adverts_categories.index', compact('categories'))->with('success', 'Adverts category was created');
     }
 
     public function show($id)
@@ -58,21 +57,21 @@ class AdvertsCategoryController extends Controller
         return view('admin.adverts_categories.show', compact('advertsCategory', 'attributes'));
     }
 
-    public function edit(AdvertsCategory $advertsCategory)
+    public function edit($id)
     {
+        $advertsCategory = $this->categoryRepository->getOne($id);
         $parents = AdvertsCategory::query()->defaultOrder()->withDepth()->get();
         return view('admin.adverts_categories.edit', compact('advertsCategory', 'parents'));
     }
 
-    public function update(Request $request, AdvertsCategory $advertsCategory)
+    public function update(AdvertsCategoryUpdateRequest $request, AdvertsCategory $advertsCategory)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'parent_id' => 'nullable|integer|exists:adverts_categories,id'
-        ]);
-
-        $advertsCategory->update($request->only(['name', 'slug', 'parent_id']));
-        return redirect()->route('admin.adverts_categories.index')->with('success', 'Adverts category was updated');
+        try {
+            $advertsCategory->update($request->only(['name', 'slug', 'parent_id']));
+            return redirect()->route('admin.adverts_categories.index')->with('success', 'Adverts category was updated');
+        } catch (\LogicException $e) {
+            return back()->withErrors(['msg' => $e->getMessage()]);
+        }
     }
 
     public function destroy(AdvertsCategory $advertsCategory)
