@@ -9,6 +9,7 @@ class Region extends Model
     public $timestamps = false;
 
     protected $fillable = ['name', 'slug', 'parent_id'];
+    const FILLABLE_COLUMNS = ['id', 'name', 'slug', 'parent_id'];
 
     public function parent()
     {

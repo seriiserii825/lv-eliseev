@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Adverts\RegionCreateRequest;
+use App\Http\Requests\Adverts\RegionUpdateRequest;
 use App\Http\Requests\UpdateRequest;
 use App\Models\Region;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -24,18 +27,15 @@ class RegionController extends Controller
         return view('admin.regions.create', compact('regions'));
     }
 
-    public function store(Request $request)
+    public function store(RegionCreateRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255'
-        ]);
         try {
             Region::create([
                 'name' => $request->name,
                 'slug' => Str::slug($request->name),
                 'parent_id' => $request->parent_id
             ]);
-        }catch (\DomainException $e) {
+        } catch (\DomainException $e) {
             return redirect()->route('admin.regions.index')->with('error', $e->getMessage());
         }
         return redirect()->route('admin.regions.index')->with('success', 'Region was created');
@@ -53,11 +53,14 @@ class RegionController extends Controller
         return view('admin.regions.edit', compact('region', 'regions'));
     }
 
-    public function update(UpdateRequest $request, Region $region)
+    public function update(RegionUpdateRequest $request, Region $region)
     {
-        $region->update($request->only(['name', 'slug', 'parent_id']));
-
-        return redirect()->route('admin.regions.index')->with('success', 'Region was updated');
+        try {
+            $region->update($request->only(['name', 'slug', 'parent_id']));
+            return redirect()->route('admin.regions.index')->with('success', 'Region was updated');
+        } catch (QueryException $e) {
+            return back()->withErrors(['msg' => $e->getMessage()]);
+        }
     }
 
     public function destroy(Region $region)

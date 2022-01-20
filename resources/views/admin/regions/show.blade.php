@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@php /** @var \App\Models\Region $region  */ @endphp
 @section('content')
     @include('layouts.partials.tabs')
     <div class="admin-container">
@@ -7,13 +8,20 @@
                 <div class="card">
                     <div class="card-body p-5">
                         <ul>
-                            <li  class="d-flex justify-content-between mb-3 pb-2" style="border-bottom: 1px solid #ccc"><strong>Name:</strong> <span>{{ $region->name }}</span></li>
-                            <li class="d-flex justify-content-between mb-3 pb-2" style="border-bottom: 1px solid #ccc"><strong>Slug:</strong> <span>{{ $region->slug }}</span></li>
-                            <li class="d-flex justify-content-between mb-3 pb-2" style="border-bottom: 1px solid #ccc"><strong>Parent:</strong><span>{{ $region->parent ? $region->parent->name : 'Root' }}</span></li>
+                            <li class="d-flex justify-content-between mb-3 pb-2" style="border-bottom: 1px solid #ccc">
+                                <strong>Name:</strong> <span>{{ $region->name }}</span></li>
+                            <li class="d-flex justify-content-between mb-3 pb-2" style="border-bottom: 1px solid #ccc">
+                                <strong>Slug:</strong> <span>{{ $region->slug }}</span></li>
+                            <li class="d-flex justify-content-between mb-3 pb-2" style="border-bottom: 1px solid #ccc">
+                                <strong>Parent:</strong><span>{{ $region->parent ? $region->parent->name : 'Root' }}</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="mb-5">
+            <a href="{{ route("admin.regions.edit", $region->id) }}" class="btn btn-primary">Edit region</a>
         </div>
         @if(count($regions))
             <div class="row">
@@ -42,7 +50,9 @@
                                     <form action="{{ route('admin.regions.destroy', $region->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                                        <button class="btn btn-danger" onclick="return confirm('Are you sure?')">
+                                            Delete
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
@@ -51,7 +61,7 @@
                     </table>
                 </div>
             </div>
-            @else
+        @else
             <h3 style="font-size: 3rem;">No <strong>children</strong> regions</h3>
         @endif
     </div>
