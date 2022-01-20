@@ -23,14 +23,14 @@
                     <td>{{ $category->id }}</td>
                     <td>
                         @for($i = 0; $i < $category->depth; $i++) &mdash; @endfor
-                        <a href="{{ route('admin.adverts_categories.show', $category) }}">{{ $category->name }}</a>
+                        <a href="{{ route('admin.adverts_categories.show', $category->id) }}">{{ $category->name }}</a>
                     </td>
                     <td>{{ $category->slug }}</td>
                     <td>{{ $category->parent ? $category->parent->name : '' }}</td>
                     <td>
                         @if(count($category->attributes) > 0)
                             <span class="badge badge-success">{{ count($category->attributes) }}</span>
-                            @else
+                        @else
                             <span class="badge badge-danger">{{ count($category->attributes) }}</span>
                         @endif
                     </td>

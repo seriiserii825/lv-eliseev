@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Repositories\AdvertsCategoryRepository;
 use App\Models\Advert\Attribute;
 use App\Models\AdvertsCategory;
 use Illuminate\Http\Request;
@@ -11,15 +12,22 @@ use Illuminate\Support\Str;
 
 class AdvertsCategoryController extends Controller
 {
+    private $categoryRepository;
+
+    public function __construct()
+    {
+        $this->categoryRepository = app(AdvertsCategoryRepository::class);
+    }
+
     public function index()
     {
-        $categories = AdvertsCategory::query()->defaultOrder()->withDepth()->with('attributes')->get();
+        $categories = $this->categoryRepository->getAllWithAttributes();
         return view('admin.adverts_categories.index', compact('categories'));
     }
 
     public function create()
     {
-        $parents = AdvertsCategory::query()->defaultOrder()->withDepth()->get();
+        $parents = $this->categoryRepository->getAllWithDepth();
         return view('admin.adverts_categories.create', compact('parents'));
     }
 
@@ -43,8 +51,9 @@ class AdvertsCategoryController extends Controller
         return redirect()->route('admin.adverts_categories.index', compact('categories'))->with('success', 'Adverts category was created');
     }
 
-    public function show(AdvertsCategory $advertsCategory)
+    public function show($id)
     {
+        $advertsCategory = $this->categoryRepository->getOne($id);
         $attributes = $advertsCategory->attributes()->orderBy('sort')->get();
         return view('admin.adverts_categories.show', compact('advertsCategory', 'attributes'));
     }
