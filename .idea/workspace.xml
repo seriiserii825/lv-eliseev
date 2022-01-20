@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b803ff4b-0724-42bd-88fb-7bdc939ded6d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/AdvertsAttribute/AdvertsAttributeStoreRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/AdvertsAttribute/AdvertsAttributeUpdateRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Adverts/AttributeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Adverts/AttributeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdvertsCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdvertsCategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/adverts/attributes/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/adverts/attributes/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/adverts/attributes/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/adverts/attributes/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/partials/flash.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/partials/flash.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/adverts_categories/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/adverts_categories/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,6 +164,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />

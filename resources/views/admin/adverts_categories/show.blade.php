@@ -45,7 +45,7 @@
                         <a href="{{ route('admin.adverts_attributes.show', [$advertsCategory, $attribute]) }}">{{ $attribute->name }}</a>
                     </td>
                     <td>{{ $attribute->type }}</td>
-                    <td>{{ $attribute->required ? 'Yes' : '' }}</td>
+                    <td>{{ $attribute->required ? 'Yes' : 'No' }}</td>
 
                     <td class="d-flex">
                         <a class="btn btn-success mr-2"

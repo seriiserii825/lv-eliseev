@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin\Adverts;
 
 use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdvertsAttribute\AdvertsAttributeStoreRequest;
+use App\Http\Requests\AdvertsAttribute\AdvertsAttributeUpdateRequest;
 use App\Models\Adverts\Attribute;
 use App\Models\AdvertsCategory;
 use Illuminate\Http\Request;
@@ -22,15 +24,8 @@ class AttributeController extends Controller
         return view('admin.adverts.attributes.create', compact('category', 'types'));
     }
 
-    public function store(Request $request)
+    public function store(AdvertsAttributeStoreRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'type' => ['required', 'string', 'max:255', Rule::in(array_keys(Attribute::typesList()))],
-            'required' => 'nullable|string|max:255',
-            'variants' => 'nullable|string',
-            'sort' => 'required|integer',
-        ]);
         $category_id = $request->get('category_id');
         $attribute = Attribute::create([
             'name' => $request['name'],
@@ -58,15 +53,8 @@ class AttributeController extends Controller
         return view('admin.adverts.attributes.edit', compact('attribute', 'category', 'types'));
     }
 
-    public function update(Request $request, $id)
+    public function update(AdvertsAttributeUpdateRequest $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'type' => ['required', 'string', 'max:255', Rule::in(array_keys(Attribute::typesList()))],
-            'required' => 'nullable|string|max:255',
-            'variants' => 'nullable|string',
-            'sort' => 'required|integer',
-        ]);
         $attribute = Attribute::findOrFail($id);
         $attribute->update([
             'name' => $request['name'],
