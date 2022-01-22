@@ -39,7 +39,7 @@ services:
     volumes:
       - "./docker/mysql:/var/lib/mysql"
     ports:
-      - "33062:3306"
+      - "33063:3306"
 
   redis:
     image: redis:3.0
